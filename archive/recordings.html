@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICIDN — Workshop Recordings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="../js/script.js" defer></script>
+
+  <style>
+    .page-header {
+      margin-top: 100px;
+      text-align: center;
+    }
+    .video-grid {
+      max-width: 1000px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .video-card iframe {
+      width: 100%;
+      height: 180px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    /* Popup notification overlay */
+    .popup-notice {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border: 2px solid #0077cc;
+      border-radius: 12px;
+      padding: 30px 40px;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      z-index: 2000;
+      opacity: 0;
+      animation: fadeInNotice 1s forwards 0.5s;
+    }
+    @keyframes fadeInNotice {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .popup-notice h2 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.6em;
+      margin-bottom: 12px;
+      color: #0077cc;
+    }
+    .popup-notice p {
+      font-size: 1.1em;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    .popup-notice .btn-ok {
+      padding: 10px 20px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Share Tech Mono', monospace;
+      transition: background 0.2s;
+    }
+    .popup-notice .btn-ok:hover {
+      background: #005fa3;
+    }
+
+    /* Dim background behind popup */
+    .overlay-dim {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.4);
+      z-index: 1500;
+      opacity: 0;
+      animation: fadeInDim 1s forwards 0.5s;
+    }
+    @keyframes fadeInDim {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <a href="../index.html" class="logo-link">
+      <div class="logo-area">
+        <img src="../imgs/logo-icidn.png" alt="ICIDN Logo" class="logo-img" />
+        <span class="site-title">ICIDN</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="../blogs.html"><i class="fas fa-pen-nib"></i> Blogs</a>
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-calendar-alt"></i> Events ▾</button>
+        <div class="dropdown-content">
+          <a href="../events/news.html">News & Announcements</a>
+          <a href="../events/workshops.html">Workshops</a>
+          <a href="../events/meetings.html">Team Meetings</a>
+        </div>
+      </div>
+      <a href="../team.html"><i class="fas fa-users"></i> Team</a>
+      <a href="../projects.html"><i class="fas fa-toolbox"></i> Projects</a>
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-archive"></i> Archive ▾</button>
+        <div class="dropdown-content">
+          <a href="recordings.html">Workshop Recordings</a>
+          <a href="creative.html">Creative Works</a>
+          <a href="scholarly.html">Scholarly Works</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="content-wrapper">
+    <div class="page-header">
+      <h1>Workshop Recordings</h1>
+      <p>Missed a session? Catch up here with recordings from ICIDN events.</p>
+    </div>
+
+    <!-- Original video section commented out -->
+    <!--
+    <div class="video-grid">
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/Zi_XLOBDo_Y" allowfullscreen></iframe></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe></div>
+    </div>
+    -->
+
+    <!-- Popup notification overlay -->
+    <div class="overlay-dim"></div>
+    <div class="popup-notice">
+      <h2>Coming Soon!</h2>
+      <p>Recordings will be uploaded after the workshop series starts.</p>
+      <button class="btn-ok" onclick="closePopup()">OK</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="inner">
+      <p>&copy; 2025 ICIDN. All rights reserved.</p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:contact@icidn.org">contact@icidn.org</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function closePopup() {
+      const popup = document.querySelector('.popup-notice');
+      const dim = document.querySelector('.overlay-dim');
+      popup.style.display = 'none';
+      dim.style.display = 'none';
+      // Optionally bring back the video grid if you un-comment it later.
+    }
+  </script>
+</body>
+</html>

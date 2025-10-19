@@ -1,0 +1,276 @@
+
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  background: url('../imgs/watermark.jpg') center center / cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.96);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 1000;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  height: 40px;
+  margin-right: 10px;
+}
+.site-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #222;
+}
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.logo-link:hover .site-title {
+  color: #0077cc;
+  text-decoration: underline;
+}
+.logo-link:hover .logo-img {
+  filter: drop-shadow(0 0 4px rgba(0, 119, 204, 0.6));
+}
+
+.nav a, .dropbtn {
+  margin-left: 24px;
+  font-size: 1em;
+  color: #555;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav a:hover, .dropbtn:hover {
+  color: #0077cc;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+.dropdown-content a {
+  display: block;
+  padding: 10px 16px;
+  color: #333;
+}
+.dropdown-content a:hover {
+  background: #f0f0f0;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:last-of-type .dropdown-content {
+  right: 0;
+  left: auto;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px; /* header height offset */
+  overflow: hidden;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('hero-bg.jpg') center center / cover no-repeat;
+  opacity: 0.5;
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+ 
+}
+.consortium-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2.2em;
+  color: #111;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+.hero-plate {
+  background: #f0f4ff; /* subtle bluish background */
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #ccddee;
+  box-shadow: 0 8px 24px rgba(80, 120, 200, 0.2);
+}
+.platform-desc {
+  font-size: 1.1em;
+  color: #444;
+}
+
+/* News Section */
+.news-section {
+  padding: 80px 20px;
+  background: white;
+}
+.news-section .inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+.news-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #222;
+}
+.news-list {
+  list-style: none;
+}
+.news-list li {
+  margin-bottom: 14px;
+  font-size: 1em;
+  color: #555;
+}
+.news-list li:first-child {
+  animation: sparkleColors 3s infinite;
+  font-weight: bold;
+}
+
+@keyframes sparkleColors {
+  0%   { color: #ff4d4d; }
+  20%  { color: #ffa500; }
+  40%  { color: #ffff33; }
+  60%  { color: #33ff33; }
+  80%  { color: #33ccff; }
+  100% { color: #cc33ff; }
+}
+
+
+/* Contact Section */
+.contact-section {
+  padding: 80px 20px;
+  background: #f8f8f8;
+}
+.contact-section .inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 16px;
+}
+.contact-section p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+.contact-section .email {
+  font-size: 1.2em;
+  color: #0077cc;
+}
+
+
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.site-header {
+  z-index: 100;
+}
+
+/* The main-content rule */
+.main-content {
+  flex: 1;
+  position: relative;
+  background: url('../imgs/watermark.png') center center / cover no-repeat !important;
+  background-attachment: fixed;
+}
+
+/* If there is an overlay which blocks it */
+.hero-overlay {
+  background: rgba(0,0,0,0.3); /* semi‑transparent so image shows through */
+  z-index: 2;
+}
+
+.hero-section {
+  background: url('../imgs/home-bg.jpg') center center / cover no-repeat;
+  background-attachment: fixed;
+  height: 90vh; /* not 100vh, to avoid pushing footer off screen */
+  position: relative;
+}
+
+
+.site-footer {
+  background: #fafafa;
+  text-align: center;
+  padding: 20px 0;
+  flex-shrink: 0;
+  width: 100%;
+  z-index: 10;
+  position: relative;
+}
