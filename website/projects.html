@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ICIDN — Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0f4f8 100%);
+      color: #2d3748;
+      overflow-x: hidden;
+      cursor: none;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Custom Cursor */
+    #cursor {
+      position: fixed;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #6366f1;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.1s ease, width 0.25s, height 0.25s, border-color 0.3s;
+    }
+    #cursor.hover {
+      width: 48px;
+      height: 48px;
+      background: rgba(99, 102, 241, 0.1);
+      border-color: #ec4899;
+    }
+
+    /* Network Canvas */
+    #networkCanvas {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.2rem 3rem;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(203, 213, 225, 0.4);
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+    }
+    .logo-area { display: flex; align-items: center; gap: 1rem; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .logo-area:hover { transform: scale(1.05); }
+    .logo-img {
+      width: 48px; height: 48px; border-radius: 12px; border: 2px solid #a5b4fc;
+      box-shadow: 0 0 24px rgba(99, 102, 241, 0.3);
+      animation: logoGlow 4s ease-in-out infinite;
+      background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 100%);
+    }
+    @keyframes logoGlow {
+      0%, 100% { box-shadow: 0 0 24px rgba(99, 102, 241, 0.3); }
+      50% { box-shadow: 0 0 36px rgba(236, 72, 153, 0.4); }
+    }
+    .site-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.6rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: 0.15em;
+    }
+
+    .nav { display: flex; gap: 0.5rem; align-items: center; }
+    .nav a, .dropbtn {
+      color: #64748b; text-decoration: none; font-size: 0.95rem;
+      padding: 0.6rem 1.2rem; border: 1px solid transparent; border-radius: 8px;
+      transition: all 0.3s ease; background: transparent; cursor: pointer;
+      font-family: 'Inter', sans-serif; position: relative; font-weight: 500;
+    }
+    .nav a:hover, .dropbtn:hover {
+      color: #6366f1; background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.2);
+    }
+    .nav a i { margin-right: 0.5rem; opacity: 0.7; }
+    .dropdown { position: relative; }
+    .dropdown-content {
+      display: none; position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+      border: 1px solid rgba(203, 213, 225, 0.4); border-radius: 12px; margin-top: 0.5rem; padding: 0.5rem;
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+    }
+    .dropdown:hover .dropdown-content { display: block; animation: fadeInDown 0.3s ease; }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .dropdown-content a { display: block; padding: 0.75rem 1rem; border-radius: 6px; color: #475569; }
+    .dropdown-content a:hover { background: rgba(99, 102, 241, 0.08); color: #6366f1; }
+
+    /* Hero Section */
+    .page-hero {
+      min-height: 60vh; display: flex; align-items: flex-end; justify-content: center;
+      padding: 8rem 3rem 3rem; position: relative; z-index: 1;
+    }
+    .hero-plate {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(24px) saturate(150%);
+      border: 1px solid rgba(203, 213, 225, 0.4);
+      border-radius: 24px;
+      padding: 2rem 2.25rem;
+      max-width: 950px;
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.12);
+    }
+    .page-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; color: #1e293b;
+      text-align: center; margin-bottom: 0.75rem;
+    }
+    .page-sub { text-align: center; color: #475569; }
+
+    /* Projects Section */
+    .projects-section { padding: 3.5rem 3rem 5rem; position: relative; z-index: 1; }
+    .projects-grid { display: none; } /* hides tiles */
+
+    /* Collaboration Overlay */
+    .overlay-notice {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ffffff;
+      border: 2px solid #6366f1;
+      border-radius: 16px;
+      padding: 28px 34px;
+      box-shadow: 0 18px 54px rgba(99,102,241,0.25);
+      max-width: 440px;
+      text-align: center;
+      opacity: 0;
+      animation: fadeInNotice 0.9s forwards 0.5s;
+      z-index: 900;
+    }
+    @keyframes fadeInNotice {
+      from { opacity: 0; transform: translate(-50%, -58%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+    .overlay-notice h2 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .overlay-notice p { font-size: 1.05rem; color: #475569; margin-bottom: 16px; }
+    .btn-collab {
+      display: inline-block;
+      padding: 10px 18px;
+      background: #6366f1; color: #fff;
+      border: 1px solid rgba(99,102,241,0.5);
+      border-radius: 10px; cursor: pointer;
+      transition: transform 0.15s ease, background 0.25s ease;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .btn-collab:hover { transform: translateY(-2px); background: #575bf4; }
+
+    /* Footer (sticky bottom) */
+    .site-footer {
+      margin-top: auto;
+      padding: 3rem;
+      text-align: center;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(203,213,225,0.4);
+      color: #64748b;
+    }
+    .site-footer a { color: #6366f1; text-decoration: none; }
+    .site-footer a:hover { color: #8b5cf6; }
+  </style>
+</head>
+<body>
+  <div id="cursor"></div>
+  <canvas id="networkCanvas"></canvas>
+
+  <header class="site-header">
+    <a href="index.html" class="logo-link" style="text-decoration: none;">
+      <div class="logo-area">
+        <img src="imgs/logo-icidn.png" alt="ICIDN Logo" class="logo-img" />
+        <span class="site-title">ICIDN</span>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="blogs.html"><i class="fas fa-pen-nib"></i> LitBit</a>
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-calendar-alt"></i> Events ▾</button>
+        <div class="dropdown-content">
+          <a href="events/news.html">News & Announcements</a>
+          <a href="events/workshops.html">Workshops</a>
+          <a href="events/meetings.html">Team Meetings</a>
+        </div>
+      </div>
+      <a href="team.html"><i class="fas fa-users"></i> Team</a>
+      <a href="projects.html"><i class="fas fa-toolbox"></i> Projects</a>
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-archive"></i> Archive ▾</button>
+        <div class="dropdown-content">
+          <a href="archive/recordings.html">Workshop Recordings</a>
+          <a href="archive/creative.html">Creative Works</a>
+          <a href="archive/scholarly.html">Scholarly Works</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="hero-plate">
+        <h1 class="page-title">Projects</h1>
+        <p class="page-sub">
+          Explore our current and past interactive narrative initiatives spanning electronic literature,
+          narrative games, immersive theatre, and experimental storytelling.
+        </p>
+      </div>
+    </section>
+
+    <section class="projects-section">
+      <div class="projects-grid">
+        <!-- Hidden Projects -->
+      </div>
+
+      <div class="overlay-notice">
+        <h2>We Are Open!</h2>
+        <p>ICIDN is accepting collaborative projects. Want to join us?</p>
+        <button class="btn-collab" onclick="window.location.href='mailto:contact@icidn.org'">Contact Us</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 ICIDN. All rights reserved.</p>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:contact@icidn.org">contact@icidn.org</a></p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  <script>
+    // Cursor
+    const cursor=document.getElementById('cursor');let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
+    document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;});
+    function animateCursor(){cursorX+=(mouseX-cursorX)*0.2;cursorY+=(mouseY-cursorY)*0.2;cursor.style.left=cursorX+'px';cursor.style.top=cursorY+'px';requestAnimationFrame(animateCursor);}animateCursor();
+    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+
+    // Network Canvas
+    const canvas=document.getElementById('networkCanvas'),ctx=canvas.getContext('2d');
+    function sizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}sizeCanvas();window.addEventListener('resize',sizeCanvas);
+    class Node{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-0.5)*0.5;this.vy=(Math.random()-0.5)*0.5;this.radius=Math.random()*2+1;this.opacity=Math.random()*0.4+0.2;const colors=['165,180,252','221,214,254','252,165,165','167,243,208'];this.color=colors[Math.floor(Math.random()*colors.length)];}
+    update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width)this.vx*=-1;if(this.y<0||this.y>canvas.height)this.vy*=-1;}
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${this.opacity})`;ctx.fill();}}
+    const nodes=Array.from({length:100},()=>new Node()),mouseNode={x:canvas.width/2,y:canvas.height/2};
+    document.addEventListener('mousemove',e=>{mouseNode.x=e.clientX;mouseNode.y=e.clientY;});
+    function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);nodes.forEach(n=>{n.update();n.draw();});nodes.forEach((a,i)=>{nodes.slice(i+1).forEach(b=>{const dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<150){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(165,180,252,${(1-dist/150)*0.2})`;ctx.lineWidth=0.5;ctx.stroke();}});});ctx.beginPath();ctx.arc(mouseNode.x,mouseNode.y,3,0,Math.PI*2);ctx.fillStyle='rgba(236,72,153,0.5)';ctx.fill();requestAnimationFrame(animate);}animate();
+  </script>
+</body>
+</html>
