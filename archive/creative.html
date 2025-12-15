@@ -10,9 +10,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -105,9 +103,7 @@
       border-radius: 12px; margin-top: 0.5rem; padding: 0.5rem;
       box-shadow: 0 20px 40px rgba(99,102,241,0.15);
     }
-    .dropdown:hover .dropdown-content {
-      display: block; animation: fadeInDown 0.3s ease;
-    }
+    .dropdown:hover .dropdown-content { display: block; animation: fadeInDown 0.3s ease; }
     @keyframes fadeInDown { from {opacity:0;transform:translateY(-10px);} to {opacity:1;transform:translateY(0);} }
     .dropdown-content a { display: block; padding: 0.75rem 1rem; border-radius: 6px; color: #475569; }
     .dropdown-content a:hover { background: rgba(99,102,241,0.08); color: #6366f1; }
@@ -140,7 +136,7 @@
     }
     .page-sub { font-size: 1.05rem; color: #475569; line-height: 1.7; }
 
-    /* Overlay Notice */
+    /* Overlay Notice (ONLY additions: close button + hidden state) */
     .overlay-notice {
       position: fixed;
       top: 50%; left: 50%;
@@ -186,6 +182,84 @@
     }
     .overlay-notice .btn-collab:hover { transform: scale(1.05); }
 
+    /* NEW: Close (×) button styling — does NOT affect layout elsewhere */
+    .notice-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(99,102,241,0.10);
+      color: #334155;
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .notice-close:hover {
+      transform: scale(1.06);
+      background: rgba(236,72,153,0.12);
+    }
+
+    /* NEW: Hidden state for notice */
+    .overlay-notice.is-hidden {
+      opacity: 0 !important;
+      pointer-events: none;
+      transform: translate(-50%, -60%) !important;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      animation: none !important;
+    }
+
+    /* NEW: Creative Works Tiles (modeled after your Team cards) */
+    .works-section { padding: 4rem 3rem 5rem; position: relative; z-index: 1; }
+    .works-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
+    }
+    .work-card {
+      background: rgba(255,255,255,0.8);
+      border-left: 3px solid #a5b4fc;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 18px rgba(99,102,241,0.08);
+      position: relative; overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .work-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-left-color: #6366f1;
+      box-shadow: 0 10px 24px rgba(99,102,241,0.15);
+    }
+    .work-thumb {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 2px solid #a5b4fc;
+      box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+    }
+    .work-title {
+      font-size: 1.25rem; font-weight: 700;
+      color: #1e293b; margin-bottom: 0.3rem;
+    }
+    .work-type {
+      font-size: 1rem; color: #6366f1; font-weight: 500;
+    }
+    .work-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 6px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
     /* Footer (fixed bottom layout) */
     .site-footer {
       margin-top: auto;
@@ -203,6 +277,7 @@
       .nav { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
       .page-hero { padding: 6rem 1.5rem 2rem; }
       .hero-plate { padding: 2rem; }
+      .works-section { padding: 3rem 1.5rem 4rem; }
     }
   </style>
 </head>
@@ -246,12 +321,46 @@
   <main>
     <section class="page-hero">
       <div class="hero-plate">
-        <h1 class="page-title">Creative Works Archive</h1>
-        <p class="page-sub">Browse our collection of interactive, narrative, and creative projects.</p>
+        <h1 class="page-title">Creative Works </h1>
+        <p class="page-sub">Browse our collection of interactive, immersive, and creative projects.</p>
       </div>
     </section>
 
-    <div class="overlay-notice">
+    <!-- NEW: Creative Works Tiles -->
+    <section class="works-section">
+      <div class="works-grid">
+
+        <!-- Tile 1 (placeholder) -->
+        <a href="archive/You are a Cosmic Dream.html" class="work-card">
+          <img src="../imgs/logo-icidn.png" alt="Creative Work" class="work-thumb"/>
+          <h3 class="work-title">You-Are-a-Cosmic-Dream</h3>
+          <p class="work-type">By Kaushiki Chaudhary</p>
+          <p class="work-desc"> You Are a Cosmic Dream is a Twine (Harlowe 3.3.8) interactive fiction game exploring posthuman memory, grief, and relationality. Players inhabit one of three more-than-human figures navigating symbolic landscapes and branching narrative paths.</p>
+        </a>
+
+        
+        <!-- 
+        <a href="#" class="work-card">
+          <img src="../imgs/logo-icidn.png" alt="Creative Work" class="work-thumb"/>
+          <h3 class="work-title">Featured Work</h3>
+          <p class="work-type">Digital Storytelling</p>
+          <p class="work-desc">A space for standout projects, exhibitions, and showcases.</p>
+        </a>-->
+         <!--
+        <!-- 
+        <a href="#" class="work-card">
+          <img src="../imgs/logo-icidn.png" alt="Creative Work" class="work-thumb"/>
+          <h3 class="work-title">Archive Index</h3>
+          <p class="work-type">Collection</p>
+          <p class="work-desc">Browse entries by year, theme, medium, or author.</p>
+        </a> -->
+
+      </div>
+    </section>
+
+    <!-- Overlay Notice (same layout; only close added) -->
+    <div class="overlay-notice" id="importantNotice">
+      <button class="notice-close" id="noticeCloseBtn" aria-label="Close notice">×</button>
       <h2>Important!</h2>
       <p>The call for creative works will be out soon - stay tuned!</p>
       <button class="btn-collab" onclick="window.location.href='mailto:contact.icidn@gmail.com'">Notify Me</button>
@@ -271,12 +380,15 @@
     const cursor=document.getElementById('cursor');
     let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
     document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;});
+
     function animateCursor(){
       cursorX+=(mouseX-cursorX)*0.2; cursorY+=(mouseY-cursorY)*0.2;
       cursor.style.left=cursorX+'px'; cursor.style.top=cursorY+'px';
       requestAnimationFrame(animateCursor);
-    } animateCursor();
-    document.querySelectorAll('a,button').forEach(el=>{
+    }
+    animateCursor();
+
+    document.querySelectorAll('a,button,.work-card').forEach(el=>{
       el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
       el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
     });
@@ -286,6 +398,7 @@
     const ctx=canvas.getContext('2d');
     function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
     resize(); window.addEventListener('resize',resize);
+
     class Node{
       constructor(){
         this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height;
@@ -294,34 +407,52 @@
         const colors=['165,180,252','221,214,254','252,165,165','167,243,208'];
         this.color=colors[Math.floor(Math.random()*colors.length)];
       }
-      update(){this.x+=this.vx;this.y+=this.vy;
+      update(){
+        this.x+=this.vx; this.y+=this.vy;
         if(this.x<0||this.x>canvas.width)this.vx*=-1;
         if(this.y<0||this.y>canvas.height)this.vy*=-1;
       }
-      draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
-        ctx.fillStyle=`rgba(${this.color},${this.opacity})`;ctx.fill();}
+      draw(){
+        ctx.beginPath(); ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+        ctx.fillStyle=`rgba(${this.color},${this.opacity})`; ctx.fill();
+      }
     }
+
     const nodes=Array.from({length:100},()=>new Node());
     const mouseNode={x:canvas.width/2,y:canvas.height/2};
     document.addEventListener('mousemove',e=>{mouseNode.x=e.clientX;mouseNode.y=e.clientY;});
+
     function animate(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
       nodes.forEach(n=>{n.update();n.draw();});
       nodes.forEach((a,i)=>{
         nodes.slice(i+1).forEach(b=>{
           const dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);
-          if(d<150){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-            ctx.strokeStyle=`rgba(165,180,252,${(1-d/150)*0.2})`;ctx.lineWidth=0.5;ctx.stroke();}
+          if(d<150){
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+            ctx.strokeStyle=`rgba(165,180,252,${(1-d/150)*0.2})`;
+            ctx.lineWidth=0.5; ctx.stroke();
+          }
         });
         const dx=a.x-mouseNode.x,dy=a.y-mouseNode.y,d=Math.hypot(dx,dy);
-        if(d<200){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mouseNode.x,mouseNode.y);
-          ctx.strokeStyle=`rgba(236,72,153,${(1-d/200)*0.3})`;ctx.lineWidth=1;ctx.stroke();}
+        if(d<200){
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(mouseNode.x,mouseNode.y);
+          ctx.strokeStyle=`rgba(236,72,153,${(1-d/200)*0.3})`;
+          ctx.lineWidth=1; ctx.stroke();
+        }
       });
-      ctx.beginPath();ctx.arc(mouseNode.x,mouseNode.y,3,0,Math.PI*2);
-      ctx.fillStyle='rgba(236,72,153,0.5)';ctx.fill();
+      ctx.beginPath(); ctx.arc(mouseNode.x,mouseNode.y,3,0,Math.PI*2);
+      ctx.fillStyle='rgba(236,72,153,0.5)'; ctx.fill();
       requestAnimationFrame(animate);
-    } animate();
+    }
+    animate();
+
+    /* NEW: Close popup logic (does not affect layout/animation/footer) */
+    const notice = document.getElementById('importantNotice');
+    const closeBtn = document.getElementById('noticeCloseBtn');
+    function closeNotice(){ notice.classList.add('is-hidden'); }
+    closeBtn.addEventListener('click', closeNotice);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeNotice(); });
   </script>
 </body>
 </html>
-
