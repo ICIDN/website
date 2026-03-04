@@ -9,13 +9,15 @@
 
   <style>
     * {margin:0; padding:0; box-sizing:border-box;}
+    
     html, body {
       height: 100%;
     }
+    
     body {
-      font-family:'Inter',sans-serif;
-      background:linear-gradient(135deg,#f5f7fa 0%,#e8eef5 50%,#f0f4f8 100%);
-      color:#2d3748;
+      font-family:'Inter', sans-serif;
+      background: #fdfbf7; /* Refined Signature Cream */
+      color: #1e293b;
       overflow-x:hidden;
       cursor:none;
       display: flex;
@@ -29,20 +31,20 @@
       z-index: 1;
     }
 
-    /* Cursor */
+    /* Cursor — Blackish-Red */
     #cursor {
       position:fixed;
       width:24px; height:24px;
-      border:2px solid #6366f1;
+      border:2px solid #3d0a1a;
       border-radius:50%;
       pointer-events:none;
       z-index:10000;
-      transition:transform 0.1s ease,width 0.25s,height 0.25s,border-color 0.3s;
+      transition:transform 0.1s ease, width 0.25s, height 0.25s, border-color 0.3s;
     }
     #cursor.hover {
       width:48px; height:48px;
-      background:rgba(99,102,241,0.1);
-      border-color:#ec4899;
+      background:rgba(61, 10, 26, 0.1);
+      border-color: #3d0a1a;
     }
 
     /* Network canvas background */
@@ -54,36 +56,37 @@
       z-index:0;
     }
 
-    /* Header */
+    /* Header — Refined Cream & Red */
     .site-header {
       position:fixed; top:0; left:0; right:0;
       z-index:1000;
       padding:1.2rem 3rem;
-      background:rgba(255,255,255,0.85);
+      background:rgba(255, 255, 255, 0.92);
       backdrop-filter:blur(20px) saturate(180%);
-      border-bottom:1px solid rgba(203,213,225,0.4);
+      border-bottom:1px solid rgba(61, 10, 26, 0.1);
       display:flex; justify-content:space-between; align-items:center;
-      box-shadow:0 4px 20px rgba(99,102,241,0.08);
+      box-shadow:0 4px 20px rgba(61, 10, 26, 0.05);
     }
     .logo-area {display:flex; align-items:center; gap:1rem; transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);}
     .logo-area:hover {transform:scale(1.05);}
     .logo-img {
-      width:48px; height:48px; border-radius:12px; border:2px solid #a5b4fc;
-      box-shadow:0 0 24px rgba(99,102,241,0.3);
+      width:48px; height:48px; border-radius:12px; border:2px solid #3d0a1a;
+      box-shadow:0 0 24px rgba(61, 10, 26, 0.2);
       animation:logoGlow 4s ease-in-out infinite;
-      background:linear-gradient(135deg,#c7d2fe 0%,#ddd6fe 100%);
+      background: #ffffff;
     }
     @keyframes logoGlow {
-      0%,100%{box-shadow:0 0 24px rgba(99,102,241,0.3);}
-      50%{box-shadow:0 0 36px rgba(236,72,153,0.4);}
+      0%,100%{box-shadow:0 0 20px rgba(61, 10, 26, 0.1);}
+      50%{box-shadow:0 0 30px rgba(107, 17, 42, 0.3);}
     }
     .site-title {
       font-family:'Share Tech Mono',monospace;
       font-size:1.6rem; font-weight:700;
-      background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#ec4899 100%);
+      background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
       letter-spacing:0.15em;
     }
+
     .nav {display:flex; gap:0.5rem; align-items:center;}
     .nav a, .dropbtn {
       color:#64748b; text-decoration:none; font-size:0.95rem;
@@ -91,23 +94,23 @@
       transition:all 0.3s ease; background:transparent; cursor:pointer; font-weight:500;
     }
     .nav a:hover, .dropbtn:hover {
-      color:#6366f1; background:rgba(99,102,241,0.08); border-color:rgba(99,102,241,0.2);
+      color:#3d0a1a; background:rgba(61, 10, 26, 0.05); border-color:rgba(61, 10, 26, 0.1);
     }
     .dropdown {position:relative;}
     .dropdown-content {
       display:none; position:absolute; top:100%; left:0;
-      min-width:220px; background:rgba(255,255,255,0.95);
+      min-width:220px; background:rgba(255, 255, 255, 0.98);
       backdrop-filter:blur(20px);
-      border:1px solid rgba(203,213,225,0.4);
+      border:1px solid rgba(61, 10, 26, 0.1);
       border-radius:12px; margin-top:0.5rem; padding:0.5rem;
-      box-shadow:0 20px 40px rgba(99,102,241,0.15);
+      box-shadow:0 20px 40px rgba(61, 10, 26, 0.1);
     }
     .dropdown:hover .dropdown-content {display:block; animation:fadeInDown 0.3s ease;}
     @keyframes fadeInDown {from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);}}
     .dropdown-content a {display:block; padding:0.75rem 1rem; border-radius:6px; color:#475569;}
-    .dropdown-content a:hover {background:rgba(99,102,241,0.08); color:#6366f1;}
+    .dropdown-content a:hover {background:rgba(61, 10, 26, 0.05); color:#3d0a1a;}
 
-    /* Hero section */
+    /* Hero section — Bold Inter Title */
     .page-hero {
       min-height:50vh;
       display:flex; align-items:flex-end; justify-content:center;
@@ -115,76 +118,75 @@
       position:relative; z-index:1;
     }
     .hero-plate {
-      background:rgba(255,255,255,0.7);
+      background:rgba(255, 255, 255, 0.8);
       backdrop-filter:blur(24px) saturate(150%);
-      border:1px solid rgba(203,213,225,0.4);
+      border:1px solid rgba(61, 10, 26, 0.1);
       border-radius:24px;
-      padding:2rem 3rem;
-      box-shadow:0 20px 60px rgba(99,102,241,0.12), inset 0 1px 0 rgba(255,255,255,0.5);
+      padding:2.5rem 3rem;
+      box-shadow:0 20px 60px rgba(61, 10, 26, 0.05);
       text-align:center; position:relative; overflow:hidden;
     }
-    .hero-plate::before {
-      content:''; position:absolute; top:0; left:-100%; width:200%; height:100%;
-      background:linear-gradient(90deg,transparent,rgba(165,180,252,0.15),transparent);
-      animation:shimmer 8s infinite;
-    }
-    @keyframes shimmer {0%{left:-100%;} 50%,100%{left:100%;}}
     .page-title {
-      font-size:clamp(2rem,5vw,3rem); font-weight:800; color:#1e293b;
-      letter-spacing:-0.02em; line-height:1.15; margin-bottom:0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size:clamp(2.2rem, 6vw, 3.5rem); 
+      font-weight:800; 
+      letter-spacing:-0.03em;
+      line-height:1.1; 
+      margin-bottom:1rem;
+      background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
-    .page-sub {font-size:1.05rem; color:#475569; line-height:1.7;}
+    .page-sub {font-size:1.1rem; color:#475569; line-height:1.7; max-width: 650px; margin: 0 auto;}
 
-    /* Overlay notice */
+    /* Overlay notice — Red Theme */
     .overlay-notice {
       position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-      background:rgba(255,255,255,0.85);
+      background:rgba(255, 255, 255, 0.95);
       backdrop-filter:blur(24px);
-      border:2px solid #a5b4fc;
+      border:1px solid rgba(61, 10, 26, 0.2);
       border-radius:16px;
       padding:30px 40px;
       max-width:420px;
       text-align:center;
-      box-shadow:0 8px 30px rgba(99,102,241,0.2);
+      box-shadow:0 30px 60px rgba(61, 10, 26, 0.1);
       z-index:2000;
       opacity:0;
-      animation:fadeInNotice 1s forwards 0.5s;
+      animation:fadeInNotice 0.6s forwards 0.3s;
     }
-    @keyframes fadeInNotice {from{opacity:0;transform:translate(-50%,-60%);} to{opacity:1;transform:translate(-50%,-50%);}}
+    @keyframes fadeInNotice {from{opacity:0;transform:translate(-50%,-55%);} to{opacity:1;transform:translate(-50%,-50%);}}
     .overlay-notice h2 {
       font-family:'Share Tech Mono',monospace;
       font-size:1.8em;
       margin-bottom:12px;
-      background:linear-gradient(135deg,#6366f1 0%,#ec4899 100%);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+      color: #3d0a1a;
     }
     .overlay-notice p {
       font-size:1.1em; color:#475569; margin-bottom:24px;
     }
     .overlay-notice .btn-collab {
-      padding:10px 20px;
-      background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#ec4899 100%);
+      padding:10px 25px;
+      background: #3d0a1a;
       color:white; border:none; border-radius:8px; cursor:pointer;
-      font-family:'Share Tech Mono',monospace; transition:transform 0.2s;
+      font-family:'Share Tech Mono',monospace; transition: all 0.3s ease;
     }
-    .overlay-notice .btn-collab:hover {transform:scale(1.05);}
+    .overlay-notice .btn-collab:hover {background: #6b112a; transform:scale(1.05);}
 
-    /* Footer (anchored at bottom) */
+    /* Footer */
     .site-footer {
       margin-top: auto;
-      padding:3rem; text-align:center; background:rgba(255,255,255,0.8);
-      backdrop-filter:blur(20px); border-top:1px solid rgba(203,213,225,0.4);
+      padding:3rem; text-align:center; 
+      background:rgba(255, 255, 255, 0.8);
+      backdrop-filter:blur(20px); 
+      border-top:1px solid rgba(61, 10, 26, 0.1);
       color:#64748b;
     }
-    .site-footer a {color:#6366f1; text-decoration:none; transition:color 0.3s ease;}
-    .site-footer a:hover {color:#8b5cf6;}
+    .site-footer a {color:#3d0a1a; text-decoration:none; font-weight: 600; transition:color 0.3s ease;}
+    .site-footer a:hover {color:#6b112a;}
 
     @media(max-width:768px){
       .site-header{flex-direction:column;gap:1rem;padding:1rem 1.5rem;}
       .nav{flex-wrap:wrap;justify-content:center;gap:0.5rem;}
-      .page-hero{padding:6rem 1.5rem 2rem;}
-      .hero-plate{padding:2rem;}
     }
   </style>
 </head>
@@ -192,7 +194,6 @@
   <div id="cursor"></div>
   <canvas id="networkCanvas"></canvas>
 
-  <!-- Header -->
   <header class="site-header">
     <a href="../index.html" class="logo-link" style="text-decoration:none;">
       <div class="logo-area">
@@ -224,7 +225,6 @@
     </nav>
   </header>
 
-  <!-- Main -->
   <main>
     <section class="page-hero">
       <div class="hero-plate">
@@ -233,7 +233,6 @@
       </div>
     </section>
 
-    <!-- Overlay -->
     <div class="overlay-notice">
       <h2>We're Open!</h2>
       <p>Contribute to the scholarship in interactive digital narratives. Collaborate with ICIDN.</p>
@@ -241,7 +240,6 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="inner">
       <p>&copy; 2025 ICIDN. All rights reserved.</p>
@@ -264,7 +262,7 @@
       el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
     });
 
-    // Network Canvas
+    // Network Canvas (Preserving Original Colors)
     const canvas=document.getElementById('networkCanvas');
     const ctx=canvas.getContext('2d');
     function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
@@ -307,4 +305,3 @@
   </script>
 </body>
 </html>
-
