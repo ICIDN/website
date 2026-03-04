@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0f4f8 100%);
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5f1ea 100%, #f0f4f8 100%);
             color: #2d3748;
             overflow-x: hidden;
             cursor: none;
@@ -25,7 +25,7 @@
             position: fixed;
             width: 24px;
             height: 24px;
-            border: 2px solid #6366f1;
+            border: 2px solid #3d0a1a;
             border-radius: 50%;
             pointer-events: none;
             z-index: 10000;
@@ -36,7 +36,7 @@
             width: 48px;
             height: 48px;
             background: rgba(99, 102, 241, 0.1);
-            border-color: #ec4899;
+            border-color: #3d0a1a;
         }
 
         /* Network Canvas */
@@ -58,13 +58,13 @@
             right: 0;
             z-index: 1000;
             padding: 1.2rem 3rem;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(203, 213, 225, 0.4);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+            background: rgba(253, 251, 247, 0.85);
+        backdrop-filter: blur(20px) saturate(180%);
+        border-bottom: 1px solid rgba(215, 204, 185, 0.4);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: none;
         }
 
         .logo-area {
@@ -82,10 +82,10 @@
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            border: 2px solid #a5b4fc;
+            border: 2px solid #3d0a1a;
             box-shadow: 0 0 24px rgba(99, 102, 241, 0.3);
             animation: logoGlow 4s ease-in-out infinite;
-            background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 100%);
+            background: linear-gradient(135deg, #c7d2fe 0%, #ffffff 100%);
         }
 
         @keyframes logoGlow {
@@ -101,7 +101,7 @@
             font-family: 'Share Tech Mono', monospace;
             font-size: 1.6rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -130,9 +130,9 @@
         }
 
         .nav a:hover, .dropbtn:hover {
-            color: #6366f1;
-            background: rgba(99, 102, 241, 0.08);
-            border-color: rgba(99, 102, 241, 0.2);
+    color: #3d0a1a;
+    background: rgba(61, 10, 26, 0.05); /* Very faint red tint on hover */
+    border-color: rgba(61, 10, 26, 0.1);
         }
 
         .nav a i {
@@ -271,7 +271,7 @@
         .news-section h2 {
             font-size: 2.2rem;
             margin-bottom: 2.5rem;
-            color: #6366f1;
+            color: #3d0a1a;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -294,9 +294,9 @@
         }
 
         .news-list li {
-            background: rgba(255, 255, 255, 0.8);
+            background: #ffffff;
             padding: 1.5rem 2rem;
-            border-left: 3px solid #a5b4fc;
+            border-left: 3px solid #3d0a1a;
             border-radius: 12px;
             backdrop-filter: blur(10px);
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -328,7 +328,7 @@
         }
 
         .news-list li strong {
-            color: #6366f1;
+            color: #3d0a1a;
             font-weight: 600;
         }
 
@@ -595,6 +595,7 @@
     </script>
 </body>
 </html>
+
 
 
 
