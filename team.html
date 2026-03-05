@@ -12,7 +12,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0f4f8 100%);
+      background: linear-gradient(135deg, #fdfbf7 0%, #f5f1ea 100%);
       color: #2d3748;
       overflow-x: hidden;
       cursor: none;
@@ -22,16 +22,17 @@
     #cursor {
       position: fixed;
       width: 24px; height: 24px;
-      border: 2px solid #6366f1;
+      border: 2px solid #3d0a1a;
       border-radius: 50%;
       pointer-events: none;
       z-index: 10000;
       transition: transform 0.1s ease, width 0.25s, height 0.25s, border-color 0.3s;
+      transform: translate(-50%, -50%);
     }
     #cursor.hover {
       width: 48px; height: 48px;
-      background: rgba(99,102,241,0.1);
-      border-color: #ec4899;
+      background: rgba(61, 10, 26, 0.05);
+      border-color: #3d0a1a;
     }
 
     /* Network Canvas */
@@ -47,16 +48,16 @@
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 1000;
       padding: 1.2rem 3rem;
-      background: rgba(255,255,255,0.85);
+      background: rgba(253, 251, 247, 0.85);
       backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(203,213,225,0.4);
+      border-bottom: 1px solid rgba(215, 204, 185, 0.4);
       display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 0 4px 20px rgba(99,102,241,0.08);
+      box-shadow: none;
     }
     .logo-area { display: flex; align-items: center; gap: 1rem; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
     .logo-area:hover { transform: scale(1.05); }
     .logo-img {
-      width: 48px; height: 48px; border-radius: 12px; border: 2px solid #a5b4fc;
+      width: 48px; height: 48px; border-radius: 12px; border: 2px solid #3d0a1a;
       box-shadow: 0 0 24px rgba(99,102,241,0.3);
       animation: logoGlow 4s ease-in-out infinite;
       background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 100%);
@@ -68,7 +69,7 @@
     .site-title {
       font-family: 'Share Tech Mono', monospace;
       font-size: 1.6rem; font-weight: 700;
-      background: linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#ec4899 100%);
+      background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
       -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: 0.15em;
@@ -81,7 +82,7 @@
       transition: all 0.3s ease; background: transparent; cursor: pointer; font-weight: 500;
     }
     .nav a:hover, .dropbtn:hover {
-      color: #6366f1; background: rgba(99,102,241,0.08); border-color: rgba(99,102,241,0.2);
+      color: #3d0a1a; background: rgba(61, 10, 26, 0.05); border-color: rgba(61, 10, 26, 0.1);
     }
     .dropdown { position: relative; }
     .dropdown-content {
@@ -90,14 +91,14 @@
       backdrop-filter: blur(20px);
       border: 1px solid rgba(203,213,225,0.4);
       border-radius: 12px; margin-top: 0.5rem; padding: 0.5rem;
-      box-shadow: 0 20px 40px rgba(99,102,241,0.15);
+      box-shadow: 0 20px 40px rgba(61, 10, 26, 0.1);
     }
     .dropdown:hover .dropdown-content {
       display: block; animation: fadeInDown 0.3s ease;
     }
     @keyframes fadeInDown { from {opacity:0;transform:translateY(-10px);} to {opacity:1;transform:translateY(0);} }
     .dropdown-content a { display: block; padding: 0.75rem 1rem; border-radius: 6px; color: #475569; }
-    .dropdown-content a:hover { background: rgba(99,102,241,0.08); color: #6366f1; }
+    .dropdown-content a:hover { background: rgba(61, 10, 26, 0.08); color: #3d0a1a; }
 
     /* Hero Section */
     .page-hero {
@@ -107,12 +108,12 @@
       position: relative; z-index: 1;
     }
     .hero-plate {
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(24px) saturate(150%);
-      border: 1px solid rgba(203,213,225,0.4);
+      background: transparent;
+      backdrop-filter: none;
+      border: none;
       border-radius: 24px;
       padding: 2rem 3rem;
-      box-shadow: 0 20px 60px rgba(99,102,241,0.12), inset 0 1px 0 rgba(255,255,255,0.5);
+      box-shadow: none;
       text-align: center; position: relative; overflow: hidden;
     }
     .hero-plate::before {
@@ -122,12 +123,25 @@
     }
     @keyframes shimmer { 0% { left:-100%; } 50%,100% { left:100%; } }
     .page-title {
-      font-size: clamp(2rem,5vw,3rem); font-weight: 800; color: #1e293b;
-      letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.75rem;
+      font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800; text-transform: uppercase; color: #1e293b;
+      letter-spacing: -2px; line-height: 0.9; margin-bottom: 1.5rem;
+      background: linear-gradient(to right, #2d0712 20%, #6b112a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .page-sub { font-size: 1.05rem; color: #475569; line-height: 1.7; }
+    .page-sub {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.1rem;
+      color: #5a4a4e;
+      max-width: 600px;
+      margin: 0 auto;
+      border-left: 3px solid #3d0a1a;
+      padding-left: 15px;
+      text-align: left;
+      display: inline-block;
+    }
 
-    /* Team Grid */
+    /* Team Grid (Top founders section stays as tiles) */
     .team-section { padding: 4rem 3rem 5rem; position: relative; z-index: 1; }
     .team-grid {
       max-width: 1000px; margin: 0 auto;
@@ -135,7 +149,7 @@
     }
     .team-card {
       background: rgba(255,255,255,0.8);
-      border-left: 3px solid #a5b4fc;
+      border-left: 3px solid #3d0a1a;
       padding: 2rem 1.5rem;
       border-radius: 16px;
       text-align: center;
@@ -146,7 +160,6 @@
       text-decoration: none;
       color: inherit;
       display: block;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
     .team-card:hover {
       transform: translateY(-6px) scale(1.02);
@@ -168,55 +181,168 @@
     .member-role {
       font-size: 1rem; color: #6366f1; font-weight: 500;
     }
-   .member-designation {
-     font-size: 0.9rem;
-     color: #666;
-     margin-top: 4px;
-     font-style: italic;
+    .member-designation {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 4px;
+      font-style: italic;
     }
-.team-list-wrapper {
-  max-width: 850px;
-  margin: 4rem auto 0;
-  background: rgba(255,255,255,0.75);
-  border: 1px solid rgba(203,213,225,0.4);
-  border-radius: 18px;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 12px 36px rgba(99,102,241,0.08);
-  backdrop-filter: blur(14px);
-}
 
-.team-list-title {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 1.4rem;
-  color: #1e293b;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #a5b4fc;
-  padding-bottom: 0.3rem;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    /* --- Section Blocks --- */
+    .team-block {
+      max-width: 1100px;
+      margin: 3.5rem auto 0;
+      padding: 0 0.5rem;
+    }
+    .team-block-header {
+      max-width: 1000px;
+      margin: 0 auto 1.5rem;
+      text-align: center;
+    }
+    .team-block-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.35rem;
+      background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .team-block-sub {
+      color: #475569;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
 
-.team-list {
-  list-style: none;
-  margin-bottom: 2rem;
-}
+    /* ========== NEW: People circles grid for two sections ========== */
+    .people-grid{
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2rem;
+      align-items: start;
+      justify-items: center;
+    }
+    .person-pill{
+      text-decoration: none;
+      color: inherit;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 0.75rem 0.9rem;
+      border-radius: 18px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      background: transparent;
+      cursor: pointer;
+      user-select: none;
+    }
+    .person-avatar{
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #a5b4fc;
+      box-shadow: 0 10px 24px rgba(61,10,26,0.10);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .person-name{
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      text-align: center;
+      color: #3d0a1a; /* dark burgundy */
+      letter-spacing: 0.02em;
+      line-height: 1.25;
+      max-width: 18ch;
+    }
+    .person-pill:hover{
+      transform: translateY(-6px) scale(1.03);
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 18px 44px rgba(99,102,241,0.12);
+      backdrop-filter: blur(12px);
+    }
+    .person-pill:hover .person-avatar{
+      transform: scale(1.04);
+      border-color: #6366f1;
+      box-shadow: 0 18px 44px rgba(99,102,241,0.18);
+    }
+    @media (max-width: 520px){
+      .person-avatar{ width: 100px; height: 100px; }
+      .people-grid{ gap: 1.5rem; }
+    }
 
-.team-list li {
-  font-size: 1rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px dashed rgba(148,163,184,0.4);
-  color: #334155;
-  transition: all 0.3s ease;
-}
-
-.team-list li:last-child { border-bottom: none; }
-
-.team-list li:hover {
-  background: rgba(99,102,241,0.05);
-  padding-left: 0.5rem;
-}
-
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      z-index: 2000;
+      padding: 1.5rem;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-box {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 30px 60px rgba(99,102,241,0.25);
+      transform: translateY(20px);
+      transition: 0.3s ease;
+      position: relative;
+    }
+    .modal-overlay.active .modal-box {
+      transform: translateY(0);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: #6366f1;
+      line-height: 1;
+    }
+    .modal-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: none;
+      margin: 0 auto 1rem;
+      border: 2px solid #a5b4fc;
+      box-shadow: 0 12px 28px rgba(99,102,241,0.18);
+    }
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+      text-align: center;
+      color: #1e293b;
+    }
+    .modal-role {
+      color: #6366f1;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .modal-text {
+      color: #475569;
+      line-height: 1.7;
+      white-space: pre-line; /* respects newlines in data-bio */
+    }
 
     /* Footer */
     .site-footer {
@@ -282,45 +408,194 @@
     </section>
 
     <section class="team-section">
+      <!-- Founders (keep tiles as-is) -->
       <div class="team-grid">
+        <a href="#" target="_blank" class="team-card">
+          <img src="imgs/cofounder.jpg" alt="Co-Founder" class="profile-img"/>
+          <h3 class="member-name">Mehulkumar Desai</h3>
+          <p class="member-role">Co-Founder</p>
+          <p class="member-designation">Research Scholar, Department of Humanities and Social Sciences, IIT Dhanbad</p>
+        </a>
 
-   <a href="#" target="_blank" class="team-card">
-    <img src="imgs/cofounder.jpg" alt="Co-Founder" class="profile-img"/>
-    <h3 class="member-name">Mehulkumar Desai</h3>
-    <p class="member-role">Co-Founder</p>
-    <p class="member-designation">Research Scholar, Department of Humanities and Social Sciences, IIT Dhanbad</p>
-  </a>
-              
-  <a href="https://shanmugapriya.com/" target="_blank" class="team-card">
-    <img src="imgs/founder.jpg" alt="Co-Founder" class="profile-img"/>
-    <h3 class="member-name">Dr. Shanmugapriya T</h3>
-    <p class="member-role">Co-Founder</p>
-    <p class="member-designation">Assistant Professor, Department of Humanities and Social Sciences, IIT Dhanbad</p>
-  </a>
-        
-</div>
-
+        <a href="https://shanmugapriya.com/" target="_blank" class="team-card">
+          <img src="imgs/founder.jpg" alt="Co-Founder" class="profile-img"/>
+          <h3 class="member-name">Dr. Shanmugapriya T</h3>
+          <p class="member-role">Co-Founder</p>
+          <p class="member-designation">Assistant Professor, Department of Humanities and Social Sciences, IIT Dhanbad</p>
+        </a>
       </div>
-      
-      <!-- New Team Members List -->
-  <div class="team-list-wrapper">
-    <h2 class="team-list-title">Team Members</h2>
-    <ul class="team-list">
-      <li><strong>Deena Larsen</strong> — Affiliated Artist (an electronic literature writer) </li>
-      <!--
-      <li><strong>Mohanapriya</strong> — </li>
-      <li><strong>Priya Nair</strong> — Content Strategist & Research Coordinator</li>
-      <li><strong>Arjun Patel</strong> — Visual Designer & Multimedia Specialist</li>
-      <li><strong>Sarah Johnson</strong> — Communications & Outreach Manager</li>-->
-    </ul>
 
-   <!-- <h2 class="team-list-title">Institutional Partners</h2>
-    <ul class="team-list">
-      <li><strong>IIT Dhanbad</strong> — Department of Humanities and Social Sciences</li>
-      <li><strong>University of Delhi</strong> — Department of English</li>
-      <li><strong>ICIDN Creative Labs</strong> — Independent Research Initiative</li>
-    </ul>-->
-  </div>
+      <!-- Global Outreach Affiliates (UPDATED: circles + names) -->
+      <section class="team-block">
+        <div class="team-block-header">
+          <h2 class="team-block-title">Global Outreach Affiliates</h2>
+          <p class="team-block-sub">Collaborators and affiliated artists supporting ICIDN’s international reach.</p>
+        </div>
+
+        <div class="people-grid">
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Andrew Phelps"
+             data-role="American University, USA"
+             data-img="imgs/Andrewphelps.jpg"
+             data-bio="Andrew Phelps is an artist, designer, and a professor in the Film & Media Arts division of the School of Communication, and is the director of the AU Game Center at American University in Washington DC. He was formerly the Chief Learning Officer at Endless Studios, a game-making studio and educational technology startup, and a professor at the Human Interface Technology Laboratory NZ (HITLabNZ) within the College of Engineering at the University of Canterbury in Christchurch, New Zealand exploring virtual and augmented reality, games and education, and art and interactive media experiences. He was also the inaugural (founding) Programme Director of the Koawa Studios | Digital Screen Campus. Prior to these appointments he served as a professor at the Rochester Institute of Technology as the founding director of the School of Interactive Games & Media, the RIT Center for Media, Arts, Games, Interaction & Creativity (MAGIC), and MAGIC Spell Studios. Phelps is also president and a founding fellow of the Higher Education Video Game Alliance (HEVGA). His latest games are The Witch’s Way (Itch.io, 2021) and Fragile Equilibrium (XBOX, Steam, Itch.io 2019). He maintains a website of his publications, writing, artwork, and curriculum development at andyworld.io.">
+            <img src="imgs/Andrewphelps.jpg" alt="Andrew Phelps" class="person-avatar"/>
+            <div class="person-name">Andrew Phelps</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Claire Carroll"
+             data-role="Cambridge University, UK"
+             data-img="imgs/Clairecarroll.jpg"
+             data-bio="Claire is interested in the aesthetics of interactive fiction (IF) and how they might connect to broader digital behaviours. More specifically, she’s exploring how the normalised usages of the second person voice and the present tense in IF create slippage for players’ immersion as they are simultaneously readers and characters, thus balancing and bouncing between extra/diegetic modes of engagement. Her research methodologies include actor-network theory, disability studies, critical code studies, and new media theory. 
+Claire is the recipient of the Judith E Wilson Studentship and is a 2023-2024 Methods Fellow affiliated with Pembroke College. Claire holds a B.A. from Yale University in English and Computer Science and has completed her M.F.A. in Creative Writing at the University of St Andrews. She is from New York (state) and likes to cook (pasta).">
+            <img src="imgs/Clairecarroll.jpg" alt="Claire Carroll" class="person-avatar"/>
+            <div class="person-name">Claire Carroll</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Deena Larsen"
+             data-role="Denver, Colorado, USA"
+             data-img="imgs/deena-larsen.jpg"
+             data-bio="Deena Larsen (born 1964) is an American new media and hypertext fiction author involved in the creative electronic writing community since the 1980s. Her work has been published in online journals such as the Iowa Review Web, Cauldron and Net, frAme, inFLECT, and Blue Moon Review. Since May 2007, the Deena Larsen Collection of early electronic literature has been housed at the Maryland Institute for Technology in the Humanities.">
+            <img src="imgs/deena-larsen.jpg" alt="Deena Larsen" class="person-avatar"/>
+            <div class="person-name">Deena Larsen</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Joseph Tabbi"
+             data-role="Chicago, Illinois, USA"
+             data-img="imgs/Josephtabbi.jpg"
+             data-bio="Joseph Tabbi is an American literary scholar and theorist renowned for his contributions to experimental American fiction, electronic literature, and digital humanities.[1] Specializing in the intersections of postmodernism, technology, and narrative forms, he explores themes such as the postmodern sublime, cognitive fictions, and posthumanism across print and born-digital media. In 1995, he co-founded the scholarly journal electronic book review. His publications include Postmodern Sublime: Technology and American Writing from Mailer to Cyberpunk (1995), Cognitive Fictions (2002), Nobody Grew But the Business: On the Life and Work of William Gaddis (2015), and The Bloomsbury Handbook of Electronic Literature (2018). Through his editorial and organizational roles, Tabbi has shaped electronic literature as a recognized global field, advocating for its preservation, scholarship, and integration with broader literary studies via manifestos and critical infrastructure.">
+            <img src="imgs/Josephtabbi.jpg" alt="Joseph Tabbi" class="person-avatar"/>
+            <div class="person-name">Joseph Tabbi</div>
+          </a>
+
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Leonardo Flores"
+             data-role="Appalachian State University, USA"
+             data-img="imgs/Leonardoflores.jpg"
+             data-bio="Leonardo Flores is Chair of the English Department at Appalachian State University and President of the Latin American Electronic Literature Network – Lit(e)Lat. His research areas are electronic literature, with a focus on e-poetry, digital writing, and the history and strategic growth of the field. He’s known for I ♥ E-Poetry, the Electronic Literature Collection, Volume 3, “Third Generation Electronic Literature” and the Antología Lit(e)Lat, Volume 1. He was a member of the MLA-CCCC Joint Task Force on AI and Writing and is now part of the MLA Task Force on Generative AI Initiatives and is available to offer talks and workshops on AI and its impact on education, policy, scholarship, and creativity. He is also a cyborg digital writer with a thriving creative coding practice. For more information on his current work, visit leonardoflores.net.">
+            <img src="imgs/Leonardoflores.jpg" alt="Leonardo Flores" class="person-avatar"/>
+            <div class="person-name">Leonardo Flores</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="María Cecilia Reyes"
+             data-role="Universidad del Norte (Colombia)"
+             data-img="imgs/Maríaceciliareyes.jpeg"
+             data-bio="Dr María Cecilia Reyes is an Assistant Professor at the Departments of Communication and Humanities and Philosophy at Universidad del Norte (Colombia). Her research focuses on narrative creation with emerging technologies through a decolonial lens. Author of Interactive Fiction in Cinematic Virtual Reality: Towards the Interactive Immersive Film (2024). General board member of the Association for Research on Interactive Digital Narratives (ARDIN). Program Chair of the International Conference on Interactive Digital Storytelling ICIDS 2024-2025.">
+            <img src="imgs/Maríaceciliareyes.jpeg" alt="María Cecilia Reyes" class="person-avatar"/>
+            <div class="person-name">María Cecilia Reyes</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="María Mencía"
+             data-role="Kingston University, London, UK"
+             data-img="imgs/Maríamencia.jpg"
+             data-bio="María Mencía is a media artist/e-poet, Associate Professor and Course Leader of the BA in Media and Communication, Kingston School of Art Faculty at Kingston University, London, UK. She is an Executive Member of the Electronic Literature Organization Board of Directors (ELO) and book editor for the "Electronic Literature" series with ELO-Bloomsbury Press. Mencía is a pioneer in digital poetry and her PhD in Digital Poetics and Digital Art at Chelsea College of Arts, University of the Arts-London (2000-2003), was one of the first practice-based research doctorates in the field of e-poetry. She studied English Philology at the Complutense University in Madrid, Fine Art & Design and History and Theory of Art at the University of the Arts London.">
+            <img src="imgs/Maríamencia.jpg" alt="María Mencía" class="person-avatar"/>
+            <div class="person-name">María Mencía</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Nick Montfort"
+             data-role="Massachusetts Institute of Technology, USA"
+             data-img="imgs/Nickmontfort.jpg"
+             data-bio="Nick Montfort’s work includes ten computer-generated books from seven presses, the collaborations Start Me Up, The Deletionist, and Sea and Spar Between, and many other digital projects. His latest poetry book, All the Way for the Win, is composed entirely of three-letter words. His MIT Press books include The Future and two co-edited volumes, The New Media Reader and Output: An Anthology of Computer-Generated Text, 1953–2023. He’s a professor at MIT, principal investigator in the University of Bergen’s Center for Digital Narrative, and director of a lab/studio, The Trope Tank. He lives in New York City.">
+            <img src="imgs/Nickmontfort.jpg" alt="Nick Montfort" class="person-avatar"/>
+            <div class="person-name">Nick Montfort</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Noah-Wardrip Fruin"
+             data-role="University of California, Santa Cruz, USA"
+             data-img="imgs/Noahwardripfruin.jpg"
+             data-bio="Noah Wardrip-Fruin is a Professor of Computational Media at the University of California, Santa Cruz. He has published six books with the MIT Press, including How Pac-Man Eats (2020). His most recent book is Animal Crossing: New Horizons — Can a Game Take Care of Us? (University of Chicago Press, 2025). His collaborative digital media works have been shown by institutions ranging from the Whitney Museum of American Art to the IndieCade Festival. With Michael Mateas, he co-directed the Expressive Intelligence Studio (a technical and cultural research group) from 2008 to 2025. The studio graduated more than 40 PhD and MFA students, many of whom are active in creative production, scholarly research, and teaching students of their own.">
+            <img src="imgs/Noahwardripfruin.jpg" alt="Noah-Wardrip Fruin" class="person-avatar"/>
+            <div class="person-name">Noah-Wardrip Fruin</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Rob Wittig"
+             data-role="USA"
+             data-img="imgs/Robwitting.jpg"
+             data-bio="Rob Wittig is a writer-designer whose career charts the evolution from pre-Web bulletin boards to today’s “netprov” (networked improvised narrative). In 1983 he co-founded the IN.S.OMNIA BBS with the Invisible Seattle collective and later chronicled its collaborative experiments in Invisible Rendezvous: Connection and Collaboration in the New Landscape of Electronic Writing (1994), written after a Fulbright year studying electronic literature with Jacques Derrida in Paris. Building on that DIY ethos, Wittig created seminal Web fictions such as The Fall of the Site of Marsha (1998) and the subscription email novel Blue Company (2001 & 02), both anthologized in key electronic-literature collections. He formalized “netprov” through projects like Grace, Wit & Charm (2012) and subsequent social-media performances that treat everyday platforms as stages for collective storytelling. His book Netprov, Networked Improvised Literature for the Classroom and Beyond (2021) documents, and shares recipes for, many fun netprovs. Rob taught for many years as an Assistant Professor of Art & Design and Writing Studies at the University of Minnesota Duluth. He now mentors new media artists while continuing to bridge literary experimentation with social technologies, proving that collaborative play remains central to the future of digital narrative.">
+            <img src="imgs/Robwitting.jpg" alt="Rob Wittig" class="person-avatar"/>
+            <div class="person-name">Rob Wittig</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Serge Bouchardon"
+             data-role="Université de technologie de Compiègne (Alliance Sorbonne Université, France)"
+             data-img="imgs/Sergebouchardon.jpg"
+             data-bio="Serge Bouchardon is Professor at the Université de technologie de Compiègne (Alliance Sorbonne Université, France), where he teaches interactive writing. His research focuses on interactive digital narratives and electronic literature.
+As an author, he is particularly interested in the way the gestures specific to the Digital contribute to the construction of meaning. The interactive narrative Loss of Grasp(http://lossofgrasp.com/) won the New Media Writing Prize 2011 and has been published in the Electronic Literature Collection volume 4 (https://collection.eliterature.org/4/deprise).
+Researcher: http://www.utc.fr/~bouchard/
+Author: http://www.sergebouchardon.com/">
+            <img src="imgs/Sergebouchardon.jpg" alt="Serge Bouchardon" class="person-avatar"/>
+            <div class="person-name">Serge Bouchardon</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Stephanie Strickland"
+             data-role="New York, United States"
+             data-img="imgs/Stephaniestickland.jpg"
+             data-bio="Stephanie Strickland is a poet living in New York City. She has published ten volumes of print poetry and co-authored twelve digital poems. Her files and papers are being collected by the David M. Rubenstein Rare Book And Manuscript Library at Duke University. Strickland held the 2002 McEver Chair in Writing at the Georgia Institute of Technology where she created, curated and produced the TechnoPoetry Festival 2002. Other invited appointments have included Distinguished Visiting Writer at Boise State University; Hugo Visiting Writer at University of Montana Missoula, Visiting Poet in Residence at Columbia College Chicago; and Visiting Poet in Residence in the MFA-PhD program at the University of Utah. Strickland presented at the &NOW Festival in 2004, 2006, 2008, 2009, and 2011, and frequently at the Society for Literature, Science, and the Arts (SLSA). She co-edited volume 1 of the Electronic Literature Organization's Electronic Literature Collection and the Fall 2007 issue of the Iowa Review Web, Multi-Modal Coding.">
+            <img src="imgs/Stephaniestickland.jpg" alt="Stephanie Strickland" class="person-avatar"/>
+            <div class="person-name">Stephanie Strickland</div>
+          </a>
+
+          <a href="#" class="person-pill affiliate-card"
+             data-name="Terhi Marttila"
+             data-role="Portugal"
+             data-img="imgs/Terhimartilla.jpg"
+             data-bio="Terhi Marttila is a Finnish artist and researcher based in Porto, Portugal. Marttila completed her PhD in digital media in 2022 (University of Porto) and was a postdoctoral fellow at the Interactive Technologies Institute (Lisbon, Portugal) 2023-2025. Marttila contributes to the digital literature community as co-editor of a volume on women’s contributions to digital literary practices in Africa, Latin America and the Iberian Peninsula for the collection Cibertextualidades (UFP, Porto, Portugal), as consultant for the ELC5 and as art track co-chair for ICIDS 2025. She serves as Associate Chair for ACM Creativity & Cognition Pictorials and as scientific committee member for ISEA, ELO, ICIDS and others as well as external reviewer for ACM CHI, CHI Play, DIS, CSCW, IEEE VIS AP among others. Her artistic and scholarly work has been published in the Electronic Literature Collection 4, at DIS, ISEA, ICIDS, ELO, Revista Saca, taper#11, The New River, nokturno.fi, on raum.pt and in other contexts.">
+            <img src="imgs/Terhimartilla.jpg" alt="Terhi Marttila" class="person-avatar"/>
+            <div class="person-name">Terhi Marttila</div>
+          </a>
+        </div>
+      </section>
+
+    
+
+      <!-- Indian Team Members -->
+<!--    <section class="team-block">
+        <div class="team-block-header">
+          <h2 class="team-block-title">Indian Team Members</h2>
+          <p class="team-block-sub">Contributors and coordinators working across ICIDN initiatives in India.</p>
+        </div>
+
+        <div class="people-grid">
+          <a href="#" class="person-pill member-card"
+             data-name=""
+             data-role="Research Coordinator"
+             data-img="imgs/india-1.jpg"
+             data-bio="Short intro about this member (1–2 lines).">
+            <img src="imgs/india-1.jpg" alt="Member Name 1" class="person-avatar"/>
+            <div class="person-name">Member Name 1</div>
+          </a>
+
+          <a href="#" class="person-pill member-card"
+             data-name="Member Name 2"
+             data-role="Content & Documentation"
+             data-img="imgs/india-2.jpg"
+             data-bio="Short intro about this member (1–2 lines).">
+            <img src="imgs/india-2.jpg" alt="Member Name 2" class="person-avatar"/>
+            <div class="person-name">Member Name 2</div>
+          </a>
+
+          <a href="#" class="person-pill member-card"
+             data-name="Member Name 3"
+             data-role="Design & Media"
+             data-img="imgs/india-3.jpg"
+             data-bio="Short intro about this member (1–2 lines).">
+            <img src="imgs/india-3.jpg" alt="Member Name 3" class="person-avatar"/>
+            <div class="person-name">Member Name 3</div>
+          </a>
+        </div>
+      </section>
+-->
     </section>
   </main>
 
@@ -332,68 +607,164 @@
     </div>
   </footer>
 
+  <!-- Network + Cursor Script -->
   <script>
     // Cursor
-    const cursor=document.getElementById('cursor');
-    let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
-    document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function animateCursor(){
-      cursorX+=(mouseX-cursorX)*0.2; cursorY+=(mouseY-cursorY)*0.2;
-      cursor.style.left=cursorX+'px'; cursor.style.top=cursorY+'px';
+    const cursor = document.getElementById('cursor');
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.2;
+      cursorY += (mouseY - cursorY) * 0.2;
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top  = cursorY + 'px';
       requestAnimationFrame(animateCursor);
-    } animateCursor();
-    document.querySelectorAll('a,button,.team-card').forEach(el=>{
-      el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
-      el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
-    });
+    }
+    animateCursor();
+
+    // Add hover behavior for cursor
+    function bindCursorHover() {
+      document.querySelectorAll('a,button,.team-card,.person-pill').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    }
+    bindCursorHover();
 
     // Network Canvas
-    const canvas=document.getElementById('networkCanvas');
-    const ctx=canvas.getContext('2d');
-    function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-    resize(); window.addEventListener('resize',resize);
-    class Node{
-      constructor(){
-        this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height;
-        this.vx=(Math.random()-0.5)*0.5; this.vy=(Math.random()-0.5)*0.5;
-        this.radius=Math.random()*2+1; this.opacity=Math.random()*0.4+0.2;
-        const colors=['165,180,252','221,214,254','252,165,165','167,243,208'];
-        this.color=colors[Math.floor(Math.random()*colors.length)];
-      }
-      update(){this.x+=this.vx;this.y+=this.vy;
-        if(this.x<0||this.x>canvas.width)this.vx*=-1;
-        if(this.y<0||this.y>canvas.height)this.vy*=-1;
-      }
-      draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
-        ctx.fillStyle=`rgba(${this.color},${this.opacity})`;ctx.fill();}
+    const canvas = document.getElementById('networkCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-    const nodes=Array.from({length:100},()=>new Node());
-    const mouseNode={x:canvas.width/2,y:canvas.height/2};
-    document.addEventListener('mousemove',e=>{mouseNode.x=e.clientX;mouseNode.y=e.clientY;});
-    function animate(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      nodes.forEach(n=>{n.update();n.draw();});
-      nodes.forEach((a,i)=>{
-        nodes.slice(i+1).forEach(b=>{
-          const dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);
-          if(d<150){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-            ctx.strokeStyle=`rgba(165,180,252,${(1-d/150)*0.2})`;ctx.lineWidth=0.5;ctx.stroke();}
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Node {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2 + 1;
+        this.opacity = Math.random() * 0.4 + 0.2;
+        const colors = ['165,180,252','221,214,254','252,165,165','167,243,208'];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    const nodes = Array.from({ length: 100 }, () => new Node());
+    const mouseNode = { x: canvas.width / 2, y: canvas.height / 2 };
+
+    document.addEventListener('mousemove', e => { mouseNode.x = e.clientX; mouseNode.y = e.clientY; });
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      nodes.forEach(n => { n.update(); n.draw(); });
+
+      nodes.forEach((a, i) => {
+        nodes.slice(i + 1).forEach(b => {
+          const dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy);
+          if (d < 150) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(165,180,252,${(1 - d / 150) * 0.2})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
         });
-        const dx=a.x-mouseNode.x,dy=a.y-mouseNode.y,d=Math.hypot(dx,dy);
-        if(d<200){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mouseNode.x,mouseNode.y);
-          ctx.strokeStyle=`rgba(236,72,153,${(1-d/200)*0.3})`;ctx.lineWidth=1;ctx.stroke();}
+
+        const dx = a.x - mouseNode.x, dy = a.y - mouseNode.y, d = Math.hypot(dx, dy);
+        if (d < 200) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(mouseNode.x, mouseNode.y);
+          ctx.strokeStyle = `rgba(236,72,153,${(1 - d / 200) * 0.3})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
       });
-      ctx.beginPath();ctx.arc(mouseNode.x,mouseNode.y,3,0,Math.PI*2);
-      ctx.fillStyle='rgba(236,72,153,0.5)';ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(mouseNode.x, mouseNode.y, 3, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(236,72,153,0.5)';
+      ctx.fill();
+
       requestAnimationFrame(animate);
-    } animate();
+    }
+    animate();
+  </script>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="affiliateModal">
+    <div class="modal-box">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <img id="modalImg" class="modal-img" alt="">
+      <h3 class="modal-title" id="modalName"></h3>
+      <p class="modal-role" id="modalRole"></p>
+      <p class="modal-text" id="modalBio"></p>
+    </div>
+  </div>
+
+  <!-- Modal Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal = document.getElementById("affiliateModal");
+      const modalName = document.getElementById("modalName");
+      const modalRole = document.getElementById("modalRole");
+      const modalBio  = document.getElementById("modalBio");
+      const modalClose = document.getElementById("modalClose");
+      const modalImg = document.getElementById("modalImg");
+
+      document.addEventListener("click", (e) => {
+        const card = e.target.closest(".affiliate-card, .member-card");
+        if (!card) return;
+
+        e.preventDefault();
+
+        modalName.textContent = card.dataset.name || "";
+        modalRole.textContent = card.dataset.role || "";
+        modalBio.textContent  = card.dataset.bio  || "";
+
+        const imgSrc = card.dataset.img || "";
+        if (imgSrc) {
+          modalImg.src = imgSrc;
+          modalImg.alt = card.dataset.name || "Profile";
+          modalImg.style.display = "block";
+        } else {
+          modalImg.style.display = "none";
+        }
+
+        modal.classList.add("active");
+      });
+
+      modalClose.addEventListener("click", () => modal.classList.remove("active"));
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("active");
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") modal.classList.remove("active");
+      });
+    });
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
