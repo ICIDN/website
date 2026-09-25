@@ -2144,7 +2144,7 @@ window.IEL_DATA = {
    "works": "Lost Water! Remainscape?",
    "scope": "Indian e-lit: eco-e-lit",
    "access": "Open access",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Delhi"
    ],
@@ -2272,7 +2272,7 @@ window.IEL_DATA = {
    "works": "Dérivepedia (Talan Memmott)",
    "scope": "Global e-lit (by Indian scholars)",
    "access": "Open access",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand"
    ],
@@ -2302,7 +2302,7 @@ window.IEL_DATA = {
    "works": "",
    "scope": "Theory of e-lit (by Indian scholars)",
    "access": "Open access",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand"
    ],
@@ -2333,7 +2333,7 @@ window.IEL_DATA = {
    "works": "",
    "scope": "Theory of e-lit (by Indian scholars)",
    "access": "Open access (verify)",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand"
    ],
@@ -2677,7 +2677,7 @@ window.IEL_DATA = {
    "works": "",
    "scope": "Indian e-lit: eco-e-lit",
    "access": "n/a",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand"
    ],
@@ -2738,7 +2738,7 @@ window.IEL_DATA = {
    "works": "",
    "scope": "Indian e-lit: field formation",
    "access": "n/a",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand"
    ],
@@ -3017,7 +3017,7 @@ window.IEL_DATA = {
    "works": "Lost Water! Remainscape?",
    "scope": "Indian e-lit: eco-e-lit",
    "access": "Subscription",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand"
    ],
@@ -3141,7 +3141,7 @@ window.IEL_DATA = {
    "works": "",
    "scope": "Related: DH infrastructure",
    "access": "Open access",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Delhi", "Michigan"
    ],
@@ -3200,7 +3200,7 @@ window.IEL_DATA = {
    "works": "The Nightingale's Playground (Campbell & Alston)",
    "scope": "Global e-lit (by Indian scholars)",
    "access": "Open access",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Tripura"
    ],
@@ -3229,7 +3229,7 @@ window.IEL_DATA = {
    "works": "",
    "scope": "Related: DH infrastructure",
    "access": "Open access",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand",
     "Madhya Pradesh"
@@ -3259,7 +3259,7 @@ window.IEL_DATA = {
    "works": "",
    "scope": "Related: DH infrastructure",
    "access": "Subscription",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand",
     "Madhya Pradesh"
@@ -3293,7 +3293,7 @@ window.IEL_DATA = {
    "works": "Cloak Room (2004); Neelakannukal (2006); Deaf Heaven (2009)",
    "scope": "Indian e-lit: field formation",
    "access": "Open access (PDF)",
-   "status": "Partially verified",
+   "status": "Verified",
    "states": [
     "Jharkhand",
     "Madhya Pradesh"
