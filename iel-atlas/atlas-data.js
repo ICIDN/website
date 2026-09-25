@@ -1,4 +1,4 @@
-/* Atlas records: works (Indian Electronic Literature Master Dataset) and scholarship (IEL Scholarship Repository). */
+/* Indian Electronic Literature Database (IELD) records: works (Indian Electronic Literature Master Dataset) and scholarship (IEL Scholarship Repository). */
 window.IEL_DATA = {
  "works": [
   {
@@ -11,7 +11,7 @@ window.IEL_DATA = {
    "lang": "Tamil",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Text",
    "family": "Text (digitally published)",
    "tags": [
@@ -48,7 +48,7 @@ window.IEL_DATA = {
    "lang": "English",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Video poetry",
    "family": "Video & sound poetry",
    "tags": [
@@ -82,7 +82,7 @@ window.IEL_DATA = {
    "lang": "Bengali",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Text",
    "family": "Text (digitally published)",
    "tags": [
@@ -152,7 +152,7 @@ window.IEL_DATA = {
    "lang": "English",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Text",
    "family": "Text (digitally published)",
    "tags": [
@@ -184,7 +184,7 @@ window.IEL_DATA = {
    "lang": "Tamil",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Text",
    "family": "Text (digitally published)",
    "tags": [
@@ -220,7 +220,7 @@ window.IEL_DATA = {
    "lang": "English",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Audio-visual slam poetry",
    "family": "Video & sound poetry",
    "tags": [
@@ -252,7 +252,7 @@ window.IEL_DATA = {
    "lang": "English",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Generative software (Max/MSP)",
    "family": "Generative & kinetic",
    "tags": [
@@ -285,7 +285,7 @@ window.IEL_DATA = {
    "lang": "Tamil",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Video poetry",
    "family": "Video & sound poetry",
    "tags": [
@@ -425,7 +425,7 @@ window.IEL_DATA = {
    "lang": "Multiple (untranslated)",
    "date": "2017",
    "year": 2017,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Video/concrete poetry film",
    "family": "Video & sound poetry",
    "tags": [
@@ -491,7 +491,7 @@ window.IEL_DATA = {
    "lang": "English",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Video poetry",
    "family": "Video & sound poetry",
    "tags": [
@@ -558,7 +558,7 @@ window.IEL_DATA = {
    "lang": "Tamil",
    "date": "2023",
    "year": 2023,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Text",
    "family": "Text (digitally published)",
    "tags": [
@@ -592,7 +592,7 @@ window.IEL_DATA = {
    "lang": "Not recorded",
    "date": "2026",
    "year": 2026,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Web based",
    "family": "Interactive & web-based",
    "tags": [],
@@ -622,7 +622,7 @@ window.IEL_DATA = {
    "lang": "Not recorded",
    "date": "2026",
    "year": 2026,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Web based",
    "family": "Interactive & web-based",
    "tags": [],
@@ -651,7 +651,7 @@ window.IEL_DATA = {
    "lang": "Not recorded",
    "date": "2026",
    "year": 2026,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Web based",
    "family": "Interactive & web-based",
    "tags": [],
@@ -680,7 +680,7 @@ window.IEL_DATA = {
    "lang": "Not recorded",
    "date": "2026",
    "year": 2026,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Web based",
    "family": "Interactive & web-based",
    "tags": [],
@@ -704,12 +704,12 @@ window.IEL_DATA = {
    "coll": "IEA2",
    "collName": "Indian E-Lit Anthology Vol. 2",
    "author": "Arundhathi Padmanabhan",
-   "title": "Gadwal - A short visual narrative of the town submerged in a climate catastrophe",
+   "title": "Gadwal- A short visual narrative of the town submerged in a climate catastrophe",
    "desc": "A visual narrative on a town affected by climate-driven flooding, per title.",
    "lang": "Not recorded",
    "date": "2026",
    "year": 2026,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Web based",
    "family": "Interactive & web-based",
    "tags": [
@@ -741,7 +741,7 @@ window.IEL_DATA = {
    "lang": "Not recorded",
    "date": "2026",
    "year": 2026,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Web based",
    "family": "Interactive & web-based",
    "tags": [],
@@ -770,7 +770,7 @@ window.IEL_DATA = {
    "lang": "Not recorded",
    "date": "2026",
    "year": 2026,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Web based",
    "family": "Interactive & web-based",
    "tags": [],
@@ -799,7 +799,7 @@ window.IEL_DATA = {
    "lang": "Not recorded",
    "date": "2026",
    "year": 2026,
-   "publisher": "IIT Indore - KSHIP",
+   "publisher": "IIT Indore- KSHIP",
    "medium": "Web based",
    "family": "Interactive & web-based",
    "tags": [
@@ -1607,7 +1607,7 @@ window.IEL_DATA = {
    "diaspora": [],
    "platformCat": "Interactive instructional web narrative",
    "entry": "Mehulkumar Desai & Shanmugapriya T.",
-   "note": "Also appears in Section C scholarship references — deduplicated here as the primary creative-work record.",
+   "note": "Also appears in Section C scholarship references-deduplicated here as the primary creative-work record.",
    "ref": false,
    "isPlatform": false,
    "script": "",
@@ -2636,7 +2636,7 @@ window.IEL_DATA = {
    "publisher": "Center for Digital Narrative, University of Bergen",
    "doi": "",
    "url": "https://glossary.cdn.uib.no/",
-   "abstract": "Defines technoeikon for an international reference glossary as the interplay of image, kinetic text, sound, video and graphic design that animates digital literature — carrying the term coined by Shanmugapriya T., Menon & Campbell (IEL-004) into a field-wide vocabulary.",
+   "abstract": "Defines technoeikon for an international reference glossary as the interplay of image, kinetic text, sound, video and graphic design that animates digital literature-carrying the term coined by Shanmugapriya T., Menon & Campbell (IEL-004) into a field-wide vocabulary.",
    "keywords": [
     "technoeikon",
     "glossary",
@@ -3275,8 +3275,8 @@ window.IEL_DATA = {
    "type": "Journal article",
    "container": "Journal of Comparative Literature and Aesthetics",
    "vol": "42",
-   "issue": "3 or 4 — see notes",
-   "pages": "51–57 or 63–71 — see notes",
+   "issue": "3 or 4-see notes",
+   "pages": "51–57 or 63–71-see notes",
    "publisher": "Vishvanatha Kaviraja Institute of Comparative Literature and Aesthetics",
    "doi": "",
    "url": "https://jcla.in/wp-content/uploads/2020/10/JCLA-42.4_E-Lit_Nirmala-Menon.pdf",
@@ -3581,7 +3581,7 @@ window.IEL_DATA = {
   {
    "who": "Desai, Mehulkumar",
    "type": "Creative work",
-   "desc": "The Sacred Sap — Indian Electronic Literature Anthology Vol. 2",
+   "desc": "The Sacred Sap-Indian Electronic Literature Anthology Vol. 2",
    "date": "2026"
   },
   {
@@ -3671,7 +3671,7 @@ window.IEL_DATA = {
   {
    "who": "Joseph, Justy",
    "type": "Thesis",
-   "desc": "PhD, IIT Indore (viva 2 Jul 2024): 'Partitioned Histories and Beyond' — semi-automated bias analysis of Partition narratives (not e-lit)",
+   "desc": "PhD, IIT Indore (viva 2 Jul 2024): 'Partitioned Histories and Beyond'-semi-automated bias analysis of Partition narratives (not e-lit)",
    "date": "2024"
   },
   {
@@ -3683,7 +3683,7 @@ window.IEL_DATA = {
   {
    "who": "Bhimjyani, Simran",
    "type": "Creative work",
-   "desc": "Blue is my Favourite Colour — Indian E-Lit Anthology Vol. 2",
+   "desc": "Blue is my Favourite Colour-Indian E-Lit Anthology Vol. 2",
    "date": "2026"
   },
   {
@@ -3701,7 +3701,7 @@ window.IEL_DATA = {
   {
    "who": "Bhatt, Prakruti",
    "type": "Creative work",
-   "desc": "'Are You There? / Kya Tum Ho Waha' — collaborative hypertext with Deena Larsen (launched before the MKBU Twine workshop)",
+   "desc": "'Are You There? / Kya Tum Ho Waha'-collaborative hypertext with Deena Larsen (launched before the MKBU Twine workshop)",
    "date": "c.2024–25"
   },
   {
@@ -3713,7 +3713,7 @@ window.IEL_DATA = {
   {
    "who": "Alagiya, Kavisha",
    "type": "Presentations (pre-doctoral, outside e-lit)",
-   "desc": "Eight conference papers 2017-2022 on ELT, Twitter as a teaching tool, Gandhi, nationalism — none on e-lit",
+   "desc": "Eight conference papers 2017-2022 on ELT, Twitter as a teaching tool, Gandhi, nationalism-none on e-lit",
    "date": "2017-22"
   },
   {
