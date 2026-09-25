@@ -840,7 +840,7 @@ window.IEL_DATA = {
    "url": "https://docs.google.com/spreadsheets/d/1Uvt-RmdSVGIWz9FnhRDMFBSkPYpxP5oofYclxsoRs_k/edit",
    "license": "",
    "region": "Canada",
-   "states": [],
+   "states": ["Canada"],
    "diaspora": ["Canada"],
    "platformCat": "Mixed born-digital experiments",
    "entry": "Mehulkumar Desai & Shanmugapriya T.",
