@@ -1,4 +1,4 @@
-/* Indian Electronic Literature Atlas: application script.
+/* Indian Electronic Literature Database (IELD): application script.
    Data: atlas-data.js (window.IEL_DATA), india-states.js (window.IEL_STATES).
    Settings: config.js (window.IEL_CONFIG). */
 (function(){
