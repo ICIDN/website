@@ -161,7 +161,7 @@ window.IEL_DATA = {
    ],
    "url": "https://indianelitanthology.iiti.ac.in/wp-content/uploads/2026/02/volume1.pdf",
    "license": "CC BY 4.0",
-   "region": "India",
+   "region": "Madhya Pradesh",
    "states": ["Madhya Pradesh"],
    "diaspora": [],
    "platformCat": "",
