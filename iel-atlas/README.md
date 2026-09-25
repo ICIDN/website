@@ -1,4 +1,4 @@
-# Indian Electronic Literature Atlas — an ICIDN project
+# Indian Electronic Literature Database (IELD), an ICIDN Project Developed by Mehulkumar Desai & Shanmugapriya T..
 
 A static website (no database or server code) that lives inside the ICIDN site at `projects/iel-atlas/`
 and is linked from ICIDN's Projects page.
