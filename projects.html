@@ -59,11 +59,11 @@
     .site-header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       padding: 1.2rem 3rem;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(253, 251, 247, 0.85);
       backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(203, 213, 225, 0.4);
+      border-bottom: 1px solid rgba(215, 204, 185, 0.4);
       display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+      box-shadow: none;
     }
     .logo-area { display: flex; align-items: center; gap: 1rem; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
     .logo-area:hover { transform: scale(1.05); }
@@ -71,7 +71,7 @@
       width: 48px; height: 48px; border-radius: 12px; border: 2px solid #3d0a1a;
       box-shadow: 0 0 24px rgba(99, 102, 241, 0.3);
       animation: logoGlow 4s ease-in-out infinite;
-      background: #ffffff;
+      background: linear-gradient(135deg, #c7d2fe 0%, #ffffff 100%);
     }
     @keyframes logoGlow {
       0%, 100% { box-shadow: 0 0 24px rgba(99, 102, 241, 0.3); }
@@ -80,7 +80,7 @@
     .site-title {
       font-family: 'Share Tech Mono', monospace;
       font-size: 1.6rem; font-weight: 700;
-      background: background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
+      background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
       letter-spacing: 0.15em;
     }
@@ -132,55 +132,43 @@
     /* Projects Section */
     .projects-section { padding: 3.5rem 3rem 5rem; position: relative; z-index: 1; }
     .projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.75rem;
-      max-width: 1150px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 480px));
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
     .project-card {
-      display: flex; flex-direction: column; background: rgba(255,255,255,0.85);
-      border: 1px solid rgba(203,213,225,0.5); border-radius: 18px; overflow: hidden;
-      text-decoration: none; color: inherit; box-shadow: 0 14px 40px rgba(61,10,26,0.08);
+      display: flex; flex-direction: column;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(203, 213, 225, 0.5);
+      border-radius: 18px; overflow: hidden;
+      text-decoration: none; color: inherit;
+      box-shadow: 0 14px 40px rgba(61, 10, 26, 0.08);
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
-    .project-card:hover { transform: translateY(-4px); border-color: #3d0a1a; box-shadow: 0 20px 50px rgba(61,10,26,0.14); }
+    .project-card:hover { transform: translateY(-4px); border-color: #3d0a1a; box-shadow: 0 20px 50px rgba(61, 10, 26, 0.14); }
     .project-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #0b1a3a; }
-    .project-body { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+    .project-body { padding: 1.5rem 1.6rem 1.7rem; display: flex; flex-direction: column; gap: 0.7rem; flex: 1; }
     .project-kicker { font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; letter-spacing: 0.08em; color: #6b112a; }
     .project-card h3 { font-size: 1.35rem; font-weight: 800; color: #1e293b; line-height: 1.25; }
-    .project-card p { color: #475569; font-size: 0.97rem; line-height: 1.55; }
+    .project-card p { color: #475569; font-size: 0.97rem; line-height: 1.6; }
     .project-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.6rem; }
-    .project-meta span { font-size: 0.8rem; color: #3d0a1a; border: 1px solid rgba(61,10,26,0.25); border-radius: 999px; padding: 0.2rem 0.7rem; }
+    .project-meta span { font-size: 0.8rem; color: #3d0a1a; border: 1px solid rgba(61, 10, 26, 0.25); border-radius: 999px; padding: 0.2rem 0.7rem; }
     .project-cta { font-family: 'Share Tech Mono', monospace; color: #3d0a1a; font-weight: 700; margin-top: 0.4rem; }
     .project-card.callout { border: 2px solid #3d0a1a; }
-    .project-card.callout .project-body { justify-content: center; }
-    
-    /* Collaboration Overlay */
-    .overlay-notice {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: #ffffff;
-      border: 2px solid #3d0a1a;
-      border-radius: 16px;
-      padding: 28px 34px;
-      box-shadow: 0 18px 54px rgba(61, 10, 26, 0.08);
-      max-width: 440px;
-      text-align: center;
-      opacity: 0;
-      animation: fadeInNotice 0.9s forwards 0.5s;
-      z-index: 900;
+    .project-card.callout .project-visual {
+      aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%); color: #fdfbf7;
+      font-family: 'Share Tech Mono', monospace; font-size: 3.2rem; letter-spacing: 0.08em;
     }
-    @keyframes fadeInNotice {
-      from { opacity: 0; transform: translate(-50%, -58%); }
-      to { opacity: 1; transform: translate(-50%, -50%); }
+    .project-card.callout .btn-collab { align-self: flex-start; margin-top: auto; }
+    @media (max-width: 860px) {
+      .projects-grid { grid-template-columns: minmax(0, 520px); }
+      .projects-section { padding: 2.5rem 1.25rem 4rem; }
     }
-    .overlay-notice h2 {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .overlay-notice p { font-size: 1.05rem; color: #475569; margin-bottom: 16px; }
     .btn-collab {
       display: inline-block;
       padding: 10px 18px;
@@ -265,14 +253,14 @@
             <span class="project-cta">Open the Atlas &rarr;</span>
           </div>
         </a>
-      </div>
-      
-       <div class="project-card callout">
+
+        <div class="project-card callout">
+          <div class="project-visual" aria-hidden="true">e-lit?</div>
           <div class="project-body">
             <span class="project-kicker">Call to participate</span>
             <h3>What Is Electronic Literature? Mapping Meanings Across Cultures and Countries</h3>
             <p>Please participate!</p>
-            <div><button class="btn-collab" onclick="window.location.href='https://forms.gle/zjknJgaNxvkvJxmw7'">Submit Your Response</button></div>
+            <button class="btn-collab" onclick="window.location.href='https://forms.gle/zjknJgaNxvkvJxmw7'">Submit Your Response</button>
           </div>
         </div>
       </div>
@@ -300,8 +288,7 @@
     draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${this.opacity})`;ctx.fill();}}
     const nodes=Array.from({length:100},()=>new Node()),mouseNode={x:canvas.width/2,y:canvas.height/2};
     document.addEventListener('mousemove',e=>{mouseNode.x=e.clientX;mouseNode.y=e.clientY;});
-    function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);nodes.forEach(n=>{n.update();n.draw();});nodes.forEach((a,i)=>{nodes.slice(i+1).forEach(b=>{const dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<150){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(165,180,252,${(1-dist/150)*0.2})`;ctx.lineWidth=0.5;ctx.stroke();}});});ctx.beginPath();ctx.arc(mouseNode.x,mouseNode.y,3,0,Math.PI*2);ctx.fillStyle='rgba(236,72,153,0.5)';ctx.fill();requestAnimationFrame(animate);}animate();
+    function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);nodes.forEach(n=>{n.update();n.draw();});nodes.forEach((a,i)=>{nodes.slice(i+1).forEach(b=>{const dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<150){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(165,180,252,${(1-dist/150)*0.2})`;ctx.lineWidth=0.5;ctx.stroke();}});const mdx=a.x-mouseNode.x,mdy=a.y-mouseNode.y,md=Math.hypot(mdx,mdy);if(md<200){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mouseNode.x,mouseNode.y);ctx.strokeStyle=`rgba(236,72,153,${(1-md/200)*0.3})`;ctx.lineWidth=1;ctx.stroke();}});ctx.beginPath();ctx.arc(mouseNode.x,mouseNode.y,3,0,Math.PI*2);ctx.fillStyle='rgba(236,72,153,0.5)';ctx.fill();requestAnimationFrame(animate);}animate();
   </script>
 </body>
 </html>
-
