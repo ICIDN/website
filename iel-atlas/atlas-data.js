@@ -1191,7 +1191,7 @@ window.IEL_DATA = {
    "desc": "Interactive multimedia installation",
    "lang": "English",
    "date": "2017",
-   "year": "2017",
+   "year": 2017,
    "publisher": "",
    "medium": "Interactive multimedia installation",
    "family": "Interactive & web-based",
@@ -1668,8 +1668,8 @@ window.IEL_DATA = {
    ],
    "url": "https://www.deenalarsen.net/waaw/",
    "license": "Unknown",
-   "region": "India", "U.S.A.",
-   "states": ["Jharkhand", "Denver"],
+   "region": "India / U.S.A.",
+   "states": ["Jharkhand"],
    "diaspora": [],
    "platformCat": "",
    "entry": "Mehulkumar Desai & Shanmugapriya T.",
@@ -1759,8 +1759,8 @@ window.IEL_DATA = {
    ],
    "url": "https://www.deenalarsen.net/krai/",
    "license": "Unknown",
-   "region": "India", "U.S.A.",
-   "states": ["Gujarat", "Denver"],
+   "region": "India / U.S.A.",
+   "states": ["Gujarat"],
    "diaspora": [],
    "platformCat": "",
    "entry": "Mehulkumar Desai & Shanmugapriya T.",
@@ -3713,8 +3713,8 @@ window.IEL_DATA = {
   {
    "who": "Alagiya, Kavisha",
    "type": "Presentations (pre-doctoral, outside e-lit)",
-   "desc": "Eight conference papers 2017–2022 on ELT, Twitter as a teaching tool, Gandhi, nationalism — none on e-lit",
-   "date": "2017–22"
+   "desc": "Eight conference papers 2017-2022 on ELT, Twitter as a teaching tool, Gandhi, nationalism — none on e-lit",
+   "date": "2017-22"
   },
   {
    "who": "Alagiya, Kavisha",
