@@ -48,7 +48,7 @@ const SCRIPTS=[
  ['ইলেকট্রনিক সাহিত্য','Bengali','Anek Bangla'],['ഇലക്ട്രോണിക് സാഹിത്യം','Malayalam','Anek Malayalam'],['ઇલેક્ટ્રોનિક સાહિત્ય','Gujarati','Anek Gujarati'],
  ['ఎలక్ట్రానిక్ సాహిత్యం','Telugu','Anek Telugu'],['ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಸಾಹಿತ್ಯ','Kannada','Anek Kannada'],['الیکٹرانک ادب','Urdu','Noto Nastaliq Urdu']];
 const kin=$('#kinetic');
-SCRIPTS.forEach(([t,l,f],i)=>kin.append(h('span',{lang:{English:'en',Hindi:'hi',Tamil:'ta',Bengali:'bn',Malayalam:'ml',Gujarati:'gu',Telugu:'te',Kannada:'kn',Urdu:'ur'}[l],dir:l==='Urdu'?'rtl':,style:`font-family:'${f}',var(--sans)`,text:t})));
+SCRIPTS.forEach(([t,l,f],i)=>kin.append(h('span',{lang:{English:'en',Hindi:'hi',Tamil:'ta',Bengali:'bn',Malayalam:'ml',Gujarati:'gu',Telugu:'te',Kannada:'kn',Urdu:'ur'}[l],dir:l==='Urdu'?'rtl':null,style:`font-family:'${f}',var(--sans)`,text:t})));
 let ki=0; const spans=$$('span',kin);
 function showK(i){spans.forEach((s,j)=>s.classList.toggle('on',i===j)); $('#kineticLang').textContent=SCRIPTS[i][1];}
 showK(0);
@@ -290,7 +290,7 @@ function openWork(w){
     h('div',{class:'kind',text:`Work, ${w.collName}`}), h('h2',{id:'dlgTitle',text:w.title}), h('p',{class:'by',text:w.author}),
     w.desc?h('p',{text:w.desc}):h('p',{class:'empty',text:'No description recorded yet.'}),
     dl([['Form',w.medium],['Date',w.date],['Language',w.lang],['Script',w.script],['Region',w.region],['Publisher',w.publisher],['Platform type',w.platformCat],['Licence',w.license],['Tags',w.tags.join(', ')],['Link',w.url?link(w.url,'Open the work'):''],['Record',w.id],['Entry by',w.entry]]),
-    cited.length?h('div',null,h('h3',{style:'font-size:16px;font-weight:600;color:var(--muted);margin:10px 0 6px',text:'Discussed in'}),h('ul',{class:'rows mini'},cited.map(r=>h('li',null,schRow(r))))):);
+    cited.length?h('div',null,h('h3',{style:'font-size:16px;font-weight:600;color:var(--muted);margin:10px 0 6px',text:'Discussed in'}),h('ul',{class:'rows mini'},cited.map(r=>h('li',null,schRow(r))))):'');
   showDlg();
 }
 function openSch(r){
@@ -300,7 +300,7 @@ function openSch(r){
     h('div',{class:'kind',text:`${r.type}, ${r.year}`}), h('h2',{id:'dlgTitle',text:r.title}), h('p',{class:'by',text:r.authors}),
     h('p',{text:r.abstract}),
     dl([['Published in',cite],['Date',r.date],['Publisher',r.publisher],['DOI',r.doi?link('https://doi.org/'+r.doi,r.doi):''],['Link',!r.doi&&r.url?link(r.url,'Open the source'):''],['Scope',r.scope],['Keywords',r.keywords.join(', ')],['Works discussed',r.works],['Access',r.access],['Record status',r.status],['Record',r.id]]),
-    linked.length?h('div',null,h('h3',{style:'font-size:16px;font-weight:600;color:var(--muted);margin:10px 0 6px',text:'Works in the atlas'}),h('ul',{class:'rows mini'},linked.map(w=>h('li',null,workRow(w))))):null);
+    linked.length?h('div',null,h('h3',{style:'font-size:16px;font-weight:600;color:var(--muted);margin:10px 0 6px',text:'Works in the atlas'}),h('ul',{class:'rows mini'},linked.map(w=>h('li',null,workRow(w))))):'');
   showDlg();
 }
 
