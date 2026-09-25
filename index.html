@@ -1,611 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian Consortium for Interactive Digital Narratives (ICIDN)</title>
-    <link rel="icon" type="image/png" href="imgs/logo-icidn.png">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #fdfbf7 0%, #f5f1ea 100%, #f0f4f8 100%);
-            color: #2d3748;
-            overflow-x: hidden;
-            cursor: none;
-        }
-
-        /* Custom Cursor */
-        #cursor {
-            position: fixed;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #3d0a1a;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            transition: transform 0.1s ease, width 0.25s, height 0.25s, border-color 0.3s;
-        }
-
-        #cursor.hover {
-            width: 48px;
-            height: 48px;
-            background: rgba(99, 102, 241, 0.1);
-            border-color: #3d0a1a;
-        }
-
-        /* Network Canvas */
-        #networkCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Header */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1.2rem 3rem;
-            background: rgba(253, 251, 247, 0.85);
-        backdrop-filter: blur(20px) saturate(180%);
-        border-bottom: 1px solid rgba(215, 204, 185, 0.4);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: none;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .logo-area:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            border: 2px solid #3d0a1a;
-            box-shadow: 0 0 24px rgba(99, 102, 241, 0.3);
-            animation: logoGlow 4s ease-in-out infinite;
-            background: linear-gradient(135deg, #c7d2fe 0%, #ffffff 100%);
-        }
-
-        @keyframes logoGlow {
-            0%, 100% { 
-                box-shadow: 0 0 24px rgba(99, 102, 241, 0.3);
-            }
-            50% { 
-                box-shadow: 0 0 36px rgba(236, 72, 153, 0.4);
-            }
-        }
-
-        .site-title {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.6rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #3d0a1a 0%, #6b112a 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 0.15em;
-        }
-
-        .nav {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .nav a, .dropbtn {
-            color: #64748b;
-            text-decoration: none;
-            font-size: 0.95rem;
-            padding: 0.6rem 1.2rem;
-            border: 1px solid transparent;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            background: transparent;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            position: relative;
-            font-weight: 500;
-        }
-
-        .nav a:hover, .dropbtn:hover {
-    color: #3d0a1a;
-    background: rgba(61, 10, 26, 0.05); /* Very faint red tint on hover */
-    border-color: rgba(61, 10, 26, 0.1);
-        }
-
-        .nav a i {
-            margin-right: 0.5rem;
-            opacity: 0.7;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            min-width: 220px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(203, 213, 225, 0.4);
-            border-radius: 12px;
-            margin-top: 0.5rem;
-            padding: 0.5rem;
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            animation: fadeInDown 0.3s ease;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .dropdown-content a {
-            display: block;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            color: #475569;
-        }
-
-        .dropdown-content a:hover {
-            background: rgba(99, 102, 241, 0.08);
-            color: #6366f1;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 3rem 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 1100px;
-            text-align: center;
-        }
-
-        .consortium-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-            color: #1e293b;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 4px rgba(99, 102, 241, 0.1);
-        }
-
-        .hero-plate {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(24px) saturate(150%);
-            border: 1px solid rgba(203, 213, 225, 0.4);
-            border-radius: 24px;
-            padding: 2.5rem 3rem;
-            margin: 2.5rem auto;
-            max-width: 920px;
-            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.12), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-plate::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(165, 180, 252, 0.15), 
-                transparent);
-            animation: shimmer 8s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            50%, 100% { left: 100%; }
-        }
-
-        .platform-desc {
-            font-size: 1.05rem;
-            line-height: 1.75;
-            color: #475569;
-            position: relative;
-            z-index: 1;
-            font-weight: 400;
-        }
-
-        /* News Section */
-        .news-section {
-            padding: 5rem 3rem;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.5) 100%);
-        }
-
-        .inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .news-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 2.5rem;
-            color: #3d0a1a;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-weight: 700;
-        }
-
-        .news-section h2 i {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        .news-list {
-            list-style: none;
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .news-list li {
-            background: #ffffff;
-            padding: 1.5rem 2rem;
-            border-left: 3px solid #3d0a1a;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.08);
-            color: #475569;
-        }
-
-        .news-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(165, 180, 252, 0.2), transparent);
-            transition: width 0.5s ease;
-        }
-
-        .news-list li:hover {
-            transform: translateX(8px) scale(1.01);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
-            border-left-color: #6366f1;
-        }
-
-        .news-list li:hover::before {
-            width: 100%;
-        }
-
-        .news-list li strong {
-            color: #3d0a1a;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        .site-footer {
-            padding: 3rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(203, 213, 225, 0.4);
-            position: relative;
-            z-index: 1;
-            color: #64748b;
-        }
-
-        .site-footer a {
-            color: #6366f1;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .site-footer a:hover {
-            color: #8b5cf6;
-        }
-
-        @media (max-width: 768px) {
-            .site-header {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem 1.5rem;
-            }
-
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .hero-section {
-                padding: 6rem 1.5rem 2rem;
-            }
-
-            .hero-plate {
-                padding: 2rem;
-            }
-
-            .news-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .consortium-title {
-                font-size: 1.75rem;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Indian Electronic Literature Atlas | ICIDN</title>
+<meta name="description" content="A project of the Indian Consortium for Interactive Digital Narratives (ICIDN). An open atlas of Indian electronic literature: born-digital works, the scholarship around them, and the people who make and study them.">
+<link rel="icon" type="image/png" href="assets/img/logo-icidn.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Share+Tech+Mono&family=Anek+Devanagari:wght@500&family=Anek+Tamil:wght@500&family=Anek+Bangla:wght@500&family=Anek+Malayalam:wght@500&family=Anek+Gujarati:wght@500&family=Anek+Telugu:wght@500&family=Anek+Kannada:wght@500&family=Noto+Nastaliq+Urdu:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div id="cursor"></div>
-    <canvas id="networkCanvas"></canvas>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <a href="https://icidn.github.io/website/index.html" aria-label="ICIDN home" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+        <img src="assets/img/logo-icidn.png" alt="ICIDN logo" width="40" height="40"><span class="org">ICIDN</span>
+      </a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="proj" href="#atlas">Indian E-Lit Atlas</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#atlas">Atlas</a><a href="#works">Works</a><a href="#scholarship">Scholarship</a><a href="#scholars">Scholars</a>
+      <a href="#timeline">Timeline</a><a href="#collections">Collections</a><a href="#about">About</a><a href="#submit" class="submit">Submit a work</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch colour theme" title="Switch colour theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+    </button>
+  </div>
+</header>
 
-    <!-- Header -->
-    <header class="site-header">
-        <a href="index.html" class="logo-link" style="text-decoration: none;">
-            <div class="logo-area">
-                <img src="imgs/logo-icidn.png" alt="ICIDN Logo" class="logo-img" />
-                <span class="site-title">ICIDN</span>
-            </div>
-        </a>
-
-        <nav class="nav">
-            <a href="index.html"><i class="fas fa-home"></i> Home</a>
-            <a href="blogs.html"><i class="fas fa-pen-nib"></i> LitBit</a>
-            <div class="dropdown">
-                <button class="dropbtn"><i class="fas fa-calendar-alt"></i> Events ▾</button>
-                <div class="dropdown-content">
-                    <a href="events/news.html">News & Announcements</a>
-                    <a href="events/workshops.html">Workshops</a>
-                    <a href="events/meetings.html">Team Meetings</a>
-                </div>
-            </div>
-            <a href="team.html"><i class="fas fa-users"></i> Team</a>
-            <a href="projects.html"><i class="fas fa-toolbox"></i> Projects</a>
-            <div class="dropdown">
-                <button class="dropbtn"><i class="fas fa-archive"></i> Archive ▾</button>
-                <div class="dropdown-content">
-                    <a href="archive/recordings.html">Workshop Recordings</a>
-                    <a href="archive/creative.html">Creative Works</a>
-                    <a href="archive/scholarly.html">Scholarly Works</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1 class="consortium-title">Indian Consortium for Interactive Digital Narratives</h1>
-                <div class="hero-plate">
-                    <p class="platform-desc">
-                        The Indian Consortium for Interactive Digital Narratives (ICIDN) envisions India as a dynamic hub for the creation, study, and critical engagement of interactive digital narratives across diverse media forms. By fostering collaboration among artists, scholars, designers, and technologists, the consortium seeks to advance both creative practice and academic inquiry in domains such as electronic literature, video games, digital storytelling, visual arts, and digital theatre. ICIDN aspires to cultivate an inclusive and innovative ecosystem that not only reflects India's rich cultural and linguistic plurality but also contributes meaningfully to global dialogues on creativity, narrative design, and the evolving relationship between technology and human expression.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Latest News -->
-        <section class="news-section" id="news">
-            <div class="inner">
-                <h2><i class="fas fa-newspaper"></i> Latest News</h2>
-                <ul class="news-list">
-                    <li><strong>July 18, 2026:</strong> Call to Participate in the Project: “What Is Electronic Literature? Mapping Meanings Across Cultures and Countries” </li>
-                    <li><strong>June 04, 2026:</strong> The First Global Outreach Affiliates Meeting </li>
-                    <li><strong>May 13, 2026:</strong> Announcing the Winners of Indian New Media Writing Prize 2026: A new category launched in collaboration with the New Media Writing Prize. </li>
-                    <li><strong>April 25, 2026:</strong> The Fourth workshop, “Living Texts”  will be facilitated by Priti Pandurangan</li>
-                    <li><strong>March 07, 2026:</strong> The Third workshop, "Creating Hypertext Fiction Using Twine" will be facilitated by Deena Larsen</li>
-                    <li><strong>Feb 07, 2026:</strong> The Second workshop in the workshop series,"Click, Scroll, Play: Discovering the Joy of Electronic literature"</li>
-                    <li><strong>Dec 18, 2025:</strong> The Inaugural session of the workshop series,"Click, Scroll, Play: Discovering the Joy of Electronic literature"</li>
-                    <li><strong>Nov 16, 2025:</strong> A Hands-on Workshop on playing with Electronic literary Work </li>
-                    <li><strong>Deadline Feb 06, 2026: </strong> Call for submission of creative works for the Indian New Media Writing Prize</li>
-                </ul>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="inner">
-            <p>&copy; 2025 ICIDN. All rights reserved.</p>
-            <p><i class="fas fa-envelope"></i> <a href="mailto:contact.icidn@gmail.com">contact.icidn@gmail.com</a></p>
+<main class="wrap">
+  <!-- ATLAS -->
+  <section class="view active" id="v-atlas" data-view="atlas" aria-labelledby="atlasTitle">
+    <div class="atlas">
+      <div id="panel">
+        <div id="overview">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="https://icidn.github.io/website/index.html">ICIDN</a> / <a href="https://icidn.github.io/website/projects.html">Projects</a> / Indian E-Lit Atlas</nav>
+          <span class="project-tag">An ICIDN project</span>
+          <h1 class="hero-title" id="atlasTitle">Indian Electronic Literature Atlas</h1>
+          <div class="kinetic" id="kinetic" aria-hidden="true"></div>
+          <div class="kinetic-lang" id="kineticLang" aria-hidden="true"></div>
+          <div class="intro">
+            <p>A shared record of born-digital literature from India and its diasporas: hypertexts, video poems, SMS novels, Instagram narratives, games and interactive fiction, and the scholarship that reads them.</p>
+            <p>Choose a state on the map to see the works made there and the research written from there.</p>
+          </div>
+          <div class="counts" id="counts"></div>
         </div>
-    </footer>
+        <div id="statePanel" class="state-panel" hidden></div>
+      </div>
+      <figure class="map-wrap" style="margin:0">
+        <div class="map-bar">
+          <div class="seg" role="group" aria-label="Map layer">
+            <button type="button" data-layer="works" aria-pressed="true">Works</button>
+            <button type="button" data-layer="scholarship" aria-pressed="false">Scholarship</button>
+          </div>
+          <div class="seg" role="group" aria-label="Base map">
+            <button type="button" data-base="sat" aria-pressed="true">Satellite</button>
+            <button type="button" data-base="street" aria-pressed="false">Street</button>
+            <button type="button" data-base="offline" aria-pressed="false">Offline</button>
+          </div>
+        </div>
+        <div class="map-stage">
+          <div id="map" role="region" aria-label="Map of India by state. Use the Jump to a state list below to choose a state with the keyboard."></div>
+        </div>
+        <div class="map-foot">
+          <div class="legend" id="legend"></div>
+          <label class="check small"><input type="checkbox" id="labelsToggle"> Place names</label>
+          <label class="field inline"><span class="sr">Jump to a state</span><select id="stateJump"></select></label>
+        </div>
+        <p class="map-note warn" id="mapNote" hidden></p>
+        <div class="beyond" id="beyond"></div>
+        <figcaption class="map-note">Works are placed by the region recorded in the dataset; scholarship by the current institution of its authors. Live imagery: Esri World Imagery. Street map: OpenStreetMap. Offline image: NASA Blue Marble. State boundaries: DataMeet (pre-2019 divisions).</figcaption>
+      </figure>
+    </div>
+    <div style="margin-top:56px">
+      <h2 class="page" style="font-size:34px">Newest entries</h2>
+      <ul class="rows" id="latest"></ul>
+    </div>
+  </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-    <script>
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
+  <!-- WORKS -->
+  <section class="view" id="v-works" data-view="works" aria-labelledby="worksTitle">
+    <h2 class="page" id="worksTitle">Works</h2>
+    <p class="lede">Born-digital and digitally published literary works, drawn from the Indian Electronic Literature Anthology, the dra.ft lists, the New Media Writing Prize and works discussed in scholarship.</p>
+    <div class="toolbar">
+      <label class="field grow">Search<input type="search" id="wq" placeholder="Title, author, tag, place"></label>
+      <label class="field">Collection<select id="wcoll"></select></label>
+      <label class="field">Form<select id="wfam"></select></label>
+      <label class="field">Language<select id="wlang"></select></label>
+      <label class="check"><input type="checkbox" id="wref"> Include platforms and non-Indian reference items</label>
+    </div>
+    <div class="count-line"><span id="wcount" aria-live="polite"></span><button class="btn ghost" id="wcsv" hidden>Download CSV</button></div>
+    <ul class="rows" id="wlist"></ul>
+  </section>
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+  <!-- SCHOLARSHIP -->
+  <section class="view" id="v-scholarship" data-view="scholarship" aria-labelledby="schTitle">
+    <h2 class="page" id="schTitle">Scholarship</h2>
+    <p class="lede">Critical writing on electronic literature in India and by Indian scholars: articles, chapters, anthologies, reviews, interviews and conference talks.</p>
+    <div class="toolbar">
+      <label class="field grow">Search<input type="search" id="sq" placeholder="Title, author, keyword"></label>
+      <label class="field">Scope<select id="sscope"></select></label>
+      <label class="field">Type<select id="stype"></select></label>
+      <label class="field">Scholar<select id="swho"></select></label>
+      <label class="check"><input type="checkbox" id="ssi"> NRHM special issue only</label>
+    </div>
+    <div class="count-line"><span id="scount" aria-live="polite"></span><button class="btn ghost" id="scsv" hidden>Download CSV</button></div>
+    <ul class="rows" id="slist"></ul>
+  </section>
 
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.2;
-            cursorY += (mouseY - cursorY) * 0.2;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
+  <!-- SCHOLARS -->
+  <section class="view" id="v-scholars" data-view="scholars" aria-labelledby="pTitle">
+    <h2 class="page" id="pTitle">Scholars</h2>
+    <p class="lede">People researching Indian electronic literature, with their current institution and the records credited to them.</p>
+    <div class="people" id="people"></div>
+  </section>
 
-        const hoverElements = document.querySelectorAll('a, button, .news-list li');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
+  <!-- TIMELINE -->
+  <section class="view" id="v-timeline" data-view="timeline" aria-labelledby="tTitle">
+    <h2 class="page" id="tTitle">Timeline</h2>
+    <p class="lede">From the first SMS novel in 2004 to the prize lists and special issues of 2026. Each dot is one record; select it to open.</p>
+    <div class="tl-wrap"><svg id="tlsvg" role="group" aria-label="Timeline of works and scholarship"></svg></div>
+    <div class="legend" style="margin-top:12px"><i style="background:var(--w3)"></i> Works <i style="background:var(--s3);margin-left:14px"></i> Scholarship</div>
+  </section>
 
-        // Network Canvas
-        const canvas = document.getElementById('networkCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+  <!-- COLLECTIONS -->
+  <section class="view" id="v-collections" data-view="collections" aria-labelledby="cTitle">
+    <h2 class="page" id="cTitle">Collections</h2>
+    <p class="lede">The anthologies, lists, prizes and special issues this atlas is built from.</p>
+    <div class="colls" id="colls"></div>
+  </section>
 
-        class Node {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-                this.opacity = Math.random() * 0.4 + 0.2;
-                const colors = [
-                    '165, 180, 252',
-                    '221, 214, 254',
-                    '252, 165, 165',
-                    '167, 243, 208',
-                ];
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-            }
+  <!-- ABOUT -->
+  <section class="view" id="v-about" data-view="about" aria-labelledby="aTitle">
+    <h2 class="page" id="aTitle">About the atlas</h2>
+    <div class="prose">
+      <p class="lede">The atlas gathers Indian electronic literature into one searchable place so that it can be read, taught, cited and kept.</p>
+      <h3>An ICIDN project</h3>
+      <p>The atlas is a project of the <a href="https://icidn.github.io/website/index.html">Indian Consortium for Interactive Digital Narratives (ICIDN)</a>, which brings together artists, scholars, designers and technologists working on electronic literature, games, digital storytelling, visual arts and digital theatre in India. It sits alongside ICIDN's workshops, the LitBit blog, the Indian New Media Writing Prize and the consortium's archive of <a href="https://icidn.github.io/website/archive/creative.html">creative</a> and <a href="https://icidn.github.io/website/archive/scholarly.html">scholarly works</a>.</p>
+      <p>Corrections, new entries and collaboration proposals are welcome at <a href="mailto:contact.icidn@gmail.com">contact.icidn@gmail.com</a> or through the <a href="#submit">submission form</a>.</p>
+      <h3>What counts as Indian electronic literature</h3>
+      <p>We use the term for literary work that depends on digital media to be what it is: works that move, branch, generate, respond, circulate on platforms or ask to be played, watched or clicked as well as read. A work belongs here when it is made in India, in an Indian language, by Indian or diasporic writers, or when it takes Indian life as its material.</p>
+      <p>Recent scholarship treats this as a plural field, “India, digital, literatureS”, so the atlas keeps hypertexts, video poetry, SMS novels, Instagram and YouTube narratives, games, blogs and platform writing side by side, and records what each one is instead of ranking them.</p>
+      <h3>Where the data comes from</h3>
+      <p><strong>Works</strong> come from the Indian Electronic Literature Master Dataset, compiled by Mehulkumar Desai and Shanmugapriya T from the Indian Electronic Literature Anthology (Vols. I and 2), the dra.ft lists, the New Media Writing Prize and works discussed in recent articles.</p>
+      <p><strong>Scholarship</strong> comes from the Indian Electronic Literature Scholarship Repository, a bibliography of critical writing from 2017 onwards, including every article in the <em>New Review of Hypermedia and Multimedia</em> special issue “India, Digital, LiteratureS” (2026).</p>
+      <h3>How to read the map</h3>
+      <p>Works are shaded by the region recorded for them. Most entries do not yet record a place, so the count of unplaced works sits beside the map. Scholarship is placed by the current institution of its authors, so it shows where the field is being built today rather than where each piece was written. Adding a place to a work is one of the most useful contributions you can make.</p>
+      <p>Boundaries come from DataMeet’s open India maps, simplified for the web. They use the state divisions before 2019.</p>
+      <h3>Status of records</h3>
+      <p>Some records are marked as flagged: dates, pages or links that still need checking against the original. Platforms such as Kavishala or Terribly Tiny Tales, and non-Indian reference items kept in the source lists, are hidden from the works list by default.</p>
+      <h3>Licence</h3>
+      <p>Metadata is shared for research and teaching. Individual works keep their own licences, shown on each record where known.</p>
+    </div>
+  </section>
 
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
+  <!-- SUBMIT -->
+  <section class="view" id="v-submit" data-view="submit" aria-labelledby="subTitle">
+    <h2 class="page" id="subTitle">Submit a work</h2>
+    <p class="lede">Describe a work that belongs in the atlas. The form builds an entry in the atlas’s record format. Copy it or download it and send it to the atlas editors; they check each entry before it is added.</p>
+    <form class="form" id="subForm" novalidate>
+      <label class="field full">Title of the work *<input name="title" required></label>
+      <label class="field">Author(s) *<input name="author" required></label>
+      <label class="field">Year<input name="date" inputmode="numeric" placeholder="2025"></label>
+      <label class="field">Language(s)<input name="language" placeholder="Tamil, English"></label>
+      <label class="field">Script<input name="script" placeholder="Tamil, Devanagari, Latin"></label>
+      <label class="field">State or region<select name="region" id="subRegion"></select></label>
+      <label class="field">Form<input name="medium" placeholder="Twine hypertext, video poem, Instagram series"></label>
+      <label class="field full">Link to the work *<input name="url" type="url" required placeholder="https://"></label>
+      <label class="field full">Short description<textarea name="description" rows="3" maxlength="400"></textarea></label>
+      <label class="field">Licence<input name="license" placeholder="CC BY 4.0"></label>
+      <label class="field">Tags<input name="tags" placeholder="eco-poetry; bilingual"></label>
+      <label class="field">Your name<input name="entry_author"></label>
+      <label class="field">Your email<input name="contact" type="email"></label>
+      <div class="full" style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" type="submit">Create entry</button>
+        <button class="btn ghost" type="reset">Clear form</button>
+      </div>
+      <div class="status full" id="subStatus" aria-live="polite"></div>
+    </form>
+    <div id="subOut" hidden style="margin-top:22px">
+      <pre class="entry" id="subEntry"></pre>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn" id="subCopy" type="button">Copy entry</button>
+        <button class="btn ghost" id="subDl" type="button" hidden>Download entry</button>
+        <button class="btn ghost" id="subMail" type="button" hidden>Email to the editors</button>
+        <button class="btn" id="subSend" type="button" hidden>Send to the editors</button>
+      </div>
+    </div>
+  </section>
+</main>
 
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
+<footer>
+  <div class="wrap">
+    <span>The Indian Electronic Literature Atlas is a project of the <a href="https://icidn.github.io/website/index.html">Indian Consortium for Interactive Digital Narratives</a>.<br>
+      Works data: Indian Electronic Literature Master Dataset. Scholarship data: IEL Scholarship Repository.</span>
+    <span><span class="icidn">&copy; 2026 ICIDN</span> &middot; <a href="mailto:contact.icidn@gmail.com">contact.icidn@gmail.com</a><br>
+      Boundaries &copy; DataMeet contributors (ODbL). Imagery &copy; Esri and contributors; &copy; OpenStreetMap contributors.</span>
+  </div>
+</footer>
 
-        const nodes = Array.from({ length: 100 }, () => new Node());
-        let mouseNode = { x: canvas.width / 2, y: canvas.height / 2 };
+<dialog id="dlg" aria-labelledby="dlgTitle"><div class="dlg" id="dlgBody"></div></dialog>
 
-        document.addEventListener('mousemove', (e) => {
-            mouseNode.x = e.clientX;
-            mouseNode.y = e.clientY;
-        });
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            nodes.forEach(node => {
-                node.update();
-                node.draw();
-            });
-
-            nodes.forEach((nodeA, i) => {
-                nodes.slice(i + 1).forEach(nodeB => {
-                    const dx = nodeA.x - nodeB.x;
-                    const dy = nodeA.y - nodeB.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(nodeA.x, nodeA.y);
-                        ctx.lineTo(nodeB.x, nodeB.y);
-                        const opacity = (1 - distance / 150) * 0.2;
-                        ctx.strokeStyle = `rgba(165, 180, 252, ${opacity})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                });
-
-                const dx = nodeA.x - mouseNode.x;
-                const dy = nodeA.y - mouseNode.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < 200) {
-                    ctx.beginPath();
-                    ctx.moveTo(nodeA.x, nodeA.y);
-                    ctx.lineTo(mouseNode.x, mouseNode.y);
-                    const opacity = (1 - distance / 200) * 0.3;
-                    ctx.strokeStyle = `rgba(236, 72, 153, ${opacity})`;
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-            });
-
-            ctx.beginPath();
-            ctx.arc(mouseNode.x, mouseNode.y, 3, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(236, 72, 153, 0.5)';
-            ctx.fill();
-
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        });
-    </script>
+<script src="assets/vendor/leaflet/leaflet.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/data/atlas-data.js"></script>
+<script src="assets/data/india-states.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
