@@ -131,8 +131,28 @@
 
     /* Projects Section */
     .projects-section { padding: 3.5rem 3rem 5rem; position: relative; z-index: 1; }
-    .projects-grid { display: none; } /* hides tiles */
-
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.75rem;
+      max-width: 1150px; margin: 0 auto;
+    }
+    .project-card {
+      display: flex; flex-direction: column; background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(203,213,225,0.5); border-radius: 18px; overflow: hidden;
+      text-decoration: none; color: inherit; box-shadow: 0 14px 40px rgba(61,10,26,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .project-card:hover { transform: translateY(-4px); border-color: #3d0a1a; box-shadow: 0 20px 50px rgba(61,10,26,0.14); }
+    .project-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #0b1a3a; }
+    .project-body { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+    .project-kicker { font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; letter-spacing: 0.08em; color: #6b112a; }
+    .project-card h3 { font-size: 1.35rem; font-weight: 800; color: #1e293b; line-height: 1.25; }
+    .project-card p { color: #475569; font-size: 0.97rem; line-height: 1.55; }
+    .project-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.6rem; }
+    .project-meta span { font-size: 0.8rem; color: #3d0a1a; border: 1px solid rgba(61,10,26,0.25); border-radius: 999px; padding: 0.2rem 0.7rem; }
+    .project-cta { font-family: 'Share Tech Mono', monospace; color: #3d0a1a; font-weight: 700; margin-top: 0.4rem; }
+    .project-card.callout { border: 2px solid #3d0a1a; }
+    .project-card.callout .project-body { justify-content: center; }
+    
     /* Collaboration Overlay */
     .overlay-notice {
       position: fixed;
@@ -235,9 +255,18 @@
 
     <section class="projects-section">
       <div class="projects-grid">
-        <!-- Hidden Projects -->
+        <a class="project-card" href="projects/iel-atlas/index.html">
+          <img src="projects/iel-atlas/assets/img/card.jpg" alt="Satellite map of India with states shaded by the number of electronic literature works" loading="lazy">
+          <div class="project-body">
+            <span class="project-kicker">Database &middot; Map &middot; Bibliography</span>
+            <h3>Indian Electronic Literature Atlas</h3>
+            <p>An interactive atlas of Indian electronic literature: born-digital works mapped across India, the scholarship that reads them, the scholars who write it, and a timeline from the first SMS novel in 2004 to today.</p>
+            <div class="project-meta"><span>59 works</span><span>50 scholarly records</span><span>Live satellite map</span></div>
+            <span class="project-cta">Open the Atlas &rarr;</span>
+          </div>
+        </a>
       </div>
-
+      
       <div class="overlay-notice">
         <h2>What Is Electronic Literature? Mapping Meanings Across Cultures and Countries</h2>
         <p>Please Participate!</p>
