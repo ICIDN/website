@@ -334,7 +334,7 @@ renderSch();
 
 /* ---------- scholars ---------- */
 D.scholars.forEach(s=>{
-  const n=D.scholarship.filter(r=>r.authors.includes(s.key)).length;
+  const n=D.scholarship.filter(r=>r.authors.includes(s.key)).length; if(!n) return;
   const acts=D.activities.filter(a=>a.who.startsWith(s.key)||a.who.includes(s.key));
   $('#people').append(h('article',{class:'person'},
     h('h3',{text:s.name}), h('p',{text:`${s.aff}, ${s.state}`}), h('p',{text:s.focus}),
