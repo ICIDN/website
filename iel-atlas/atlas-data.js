@@ -2278,6 +2278,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  /*
   {
    "id": "IEL-046",
    "authors": "Desai, Mehulkumar; Shanmugapriya T.",
@@ -2308,6 +2309,8 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  */
+  /*
   {
    "id": "IEL-047",
    "authors": "Desai, Mehulkumar; Shanmugapriya T.; Koenitz, Hartmut",
@@ -2339,6 +2342,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  */
   {
    "id": "IEL-049",
    "authors": "Risam, Roopika; Guiliano, Jennifer; Roy, Samya Brata; Hosny, Reham; Henrickson, Leah",
@@ -2466,6 +2470,7 @@ window.IEL_DATA = {
    ],
    "si": true
   },
+  /*
   {
    "id": "IEL-021",
    "authors": "Fernandez, Geoffrey Bryan; Gaur, Rashmi",
@@ -2497,6 +2502,7 @@ window.IEL_DATA = {
    ],
    "si": true
   },
+  */
   {
    "id": "IEL-022",
    "authors": "Salim, Simi K.",
@@ -2839,6 +2845,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  /*
   {
    "id": "IEL-048",
    "authors": "Roy, Samya Brata",
@@ -2870,6 +2877,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  */
   {
    "id": "IEL-008",
    "authors": "Menon, Nirmala; Shanmugapriya T.; Joseph, Justy; Sutton, Deborah (eds.)",
@@ -3059,6 +3067,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  /*
   {
    "id": "IEL-015",
    "authors": "Roy, Samya Brata",
@@ -3090,6 +3099,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  */
   {
    "id": "IEL-018",
    "authors": "Joseph, Justy; Menon, Nirmala",
@@ -3121,6 +3131,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  /*
   {
    "id": "IEL-035",
    "authors": "Rizvi, Zahra; Chauhan, R.; Pue, A. Sean; Zaidi, Nishat",
@@ -3151,6 +3162,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  */
   {
    "id": "IEL-039",
    "authors": "Ramya, R.; Rukmini, S.",
@@ -3210,6 +3222,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  /*
   {
    "id": "IEL-033",
    "authors": "Shanmugapriya T.; Menon, Nirmala",
@@ -3240,6 +3253,8 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  */
+  /*
   {
    "id": "IEL-034",
    "authors": "Menon, Nirmala; Shanmugapriya T.",
@@ -3270,6 +3285,7 @@ window.IEL_DATA = {
    ],
    "si": false
   },
+  */
   {
    "id": "IEL-003",
    "authors": "Shanmugapriya T.; Menon, Nirmala",
