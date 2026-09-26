@@ -16,7 +16,7 @@ function h(tag, attrs, ...kids){
   for(const c of kids.flat()){ if(c==null||c===false) continue; el.append(c.nodeType?c:document.createTextNode(String(c))); }
   return el;
 }
-const COLL_LABEL={IEA1:'Indian E-Lit Anthology, Vol. I',IEA2:'Indian E-Lit Anthology, Vol. 2',DRAFTCTL:'dra.ft: Collaborative Text Lab',DRAFTEEL:'dra.ft: E-Lit list',NMWP:'New Media Writing Prize, India',SCH:'Discussed in scholarship'};
+const COLL_LABEL={IEA1:'Indian E-Lit Anthology, Vol. I',IEA2:'Indian E-Lit Anthology, Vol. 2',DRAFTCTL:'dra.ft: Collaborative Text Lab',DRAFTEEL:'dra.ft: E-Lit list',NMWP:'New Media Writing Prize, India',SCH:'Discussed in scholarship',ELC4:'Electronic Literature Collection, Vol. 4'};
 D.works.forEach(w=>{w.collName=COLL_LABEL[w.coll]||w.coll; w.hay=[w.title,w.author,w.desc,w.medium,w.region,w.lang,w.tags.join(' ')].join(' ').toLowerCase();});
 D.scholarship.forEach(r=>{r.hay=[r.title,r.authors,r.abstract,r.container,r.keywords.join(' '),r.works].join(' ').toLowerCase();});
 const SCH_BY_ID=Object.fromEntries(D.scholarship.map(r=>[r.id,r]));
@@ -378,7 +378,7 @@ const COLLS=[
  ['NMWP','w','New Media Writing Prize, India','Winners and shortlisted works of the Indian New Media Writing Prize, the category ICIDN launched with the New Media Writing Prize.'],
  ['DRAFTCTL','w','dra.ft: Collaborative Text Lab','Collaborative born-digital experiments presented around ELO 2021: kinetic poetry, web-crawled text, data visualisation and Twine.'],
  ['DRAFTEEL','w','dra.ft: E-Lit list','A community-built list of Indian interactive fiction, games, SMS novels and platform writing, kept with a few reference items from elsewhere.'],
- ['SCH','w','Discussed in scholarship','Works known mainly through the articles that analyse them.'],
+  ['ELC4','w','Electronic Literature Collection, Vol. 4','Works by Indian creators in the Electronic Literature Organization\'s fourth Collection (2022), selected from over 450 submissions worldwide.'],'Works known mainly through the articles that analyse them.'],
 ];
 COLLS.forEach(([k,c,t,d])=>{const n=D.works.filter(w=>w.coll===k).length;
   $('#colls').append(h('article',{class:'coll '+c},h('h3',{text:t}),h('p',{text:d}),h('button',{class:'btn ghost',type:'button',onclick:()=>{$('#wcoll').value=COLL_LABEL[k];$('#wref').checked=true;renderWorks();location.hash='works';}},`Browse ${n} ${n===1?'work':'works'}`)));});
