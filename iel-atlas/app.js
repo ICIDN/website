@@ -378,7 +378,8 @@ const COLLS=[
  ['NMWP','w','New Media Writing Prize, India','Winners and shortlisted works of the Indian New Media Writing Prize, the category ICIDN launched with the New Media Writing Prize.'],
  ['DRAFTCTL','w','dra.ft: Collaborative Text Lab','Collaborative born-digital experiments presented around ELO 2021: kinetic poetry, web-crawled text, data visualisation and Twine.'],
  ['DRAFTEEL','w','dra.ft: E-Lit list','A community-built list of Indian interactive fiction, games, SMS novels and platform writing, kept with a few reference items from elsewhere.'],
-  ['ELC4','w','Electronic Literature Collection, Vol. 4','Works by Indian creators in the Electronic Literature Organization\'s fourth Collection (2022), selected from over 450 submissions worldwide.'],'Works known mainly through the articles that analyse them.'],
+ ['ELC4','w','Electronic Literature Collection, Vol. 4','Works by Indian creators in the Electronic Literature Organization\'s fourth Collection (2022), selected from over 450 submissions worldwide.'],
+ ['SCH','w','Discussed in scholarship','Works known mainly through the articles that analyse them.'],
 ];
 COLLS.forEach(([k,c,t,d])=>{const n=D.works.filter(w=>w.coll===k).length;
   $('#colls').append(h('article',{class:'coll '+c},h('h3',{text:t}),h('p',{text:d}),h('button',{class:'btn ghost',type:'button',onclick:()=>{$('#wcoll').value=COLL_LABEL[k];$('#wref').checked=true;renderWorks();location.hash='works';}},`Browse ${n} ${n===1?'work':'works'}`)));});
